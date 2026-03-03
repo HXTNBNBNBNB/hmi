@@ -229,31 +229,45 @@ std::shared_ptr<BaseModel> ModelImporter::importGLTFModel(const std::string& mod
     model->setSourceFile(filepath);
     model->setModelFormat("gltf");
 
-    // 遍历所有 mesh，合并顶点和索引
-    std::vector<Vertex> all_vertices;
-    std::vector<unsigned int> all_indices;
-
-    for (int m = 0; m < static_cast<int>(loader.getMeshCount()); ++m) {
-        std::vector<Vertex> mesh_vertices;
-        std::vector<unsigned int> mesh_indices;
-
-        if (!loader.getMeshData(m, mesh_vertices, mesh_indices)) {
-            std::cerr << "Failed to extract mesh " << m << " data" << std::endl;
-            continue;
-        }
-
-        // 调整索引偏移后合并
-        unsigned int offset = static_cast<unsigned int>(all_vertices.size());
-        all_vertices.insert(all_vertices.end(), mesh_vertices.begin(), mesh_vertices.end());
-        for (unsigned int idx : mesh_indices) {
-            all_indices.push_back(idx + offset);
+    // 加载所有材质
+    std::vector<PBRMaterial> materials;
+    size_t mat_count = loader.getMaterialCount();
+    materials.reserve(mat_count);
+    for (size_t i = 0; i < mat_count; ++i) {
+        PBRMaterial mat;
+        if (loader.getMaterial(static_cast<int>(i), mat)) {
+            materials.push_back(mat);
+            std::cout << "Material[" << i << "] \"" << mat.name << "\" color=("
+                      << mat.baseColorFactor.r << "," << mat.baseColorFactor.g << ","
+                      << mat.baseColorFactor.b << ") metallic=" << mat.metallicFactor
+                      << " roughness=" << mat.roughnessFactor << std::endl;
         }
     }
 
-    if (!all_vertices.empty()) {
-        model->setMeshData(all_vertices, all_indices);
+    // 使用新的子网格接口
+    std::vector<SubMesh> all_submeshes;
+
+    for (int m = 0; m < static_cast<int>(loader.getMeshCount()); ++m) {
+        std::vector<SubMesh> mesh_submeshes;
+        if (loader.getSubMeshes(m, mesh_submeshes)) {
+            all_submeshes.insert(all_submeshes.end(),
+                                mesh_submeshes.begin(), mesh_submeshes.end());
+        }
+    }
+
+    if (!all_submeshes.empty()) {
+        model->setSubMeshes(all_submeshes, materials);
+
+        // 统计顶点数
+        size_t total_verts = 0, total_indices = 0;
+        for (const auto& sm : all_submeshes) {
+            total_verts += sm.vertices.size();
+            total_indices += sm.indices.size();
+        }
+        std::cout << "Loaded GLTF model with " << all_submeshes.size() << " submeshes, "
+                  << total_verts << " vertices, " << total_indices << " indices" << std::endl;
     } else {
-        std::cerr << "No mesh data extracted from GLTF file" << std::endl;
+        std::cerr << "No submesh data extracted from GLTF file" << std::endl;
     }
 
     return model;

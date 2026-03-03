@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o"
   "CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o"
   "CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o"
+  "CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o"
   "hmi_scene"
   "hmi_scene.pdb"
 )

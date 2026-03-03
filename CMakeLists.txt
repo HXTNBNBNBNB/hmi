@@ -31,6 +31,7 @@ add_executable(hmi_scene
     src/importer/ModelImporter.cpp
     src/controller/ModelController.cpp
     src/controller/UDPDataManager.cpp
+    src/ui/TextRenderer.cpp
 )
 
 target_include_directories(hmi_scene PRIVATE

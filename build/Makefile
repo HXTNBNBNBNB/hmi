@@ -393,6 +393,33 @@ src/model/ModelManager.cpp.s:
 	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.s
 .PHONY : src/model/ModelManager.cpp.s
 
+src/ui/TextRenderer.o: src/ui/TextRenderer.cpp.o
+
+.PHONY : src/ui/TextRenderer.o
+
+# target to build an object file
+src/ui/TextRenderer.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o
+.PHONY : src/ui/TextRenderer.cpp.o
+
+src/ui/TextRenderer.i: src/ui/TextRenderer.cpp.i
+
+.PHONY : src/ui/TextRenderer.i
+
+# target to preprocess a source file
+src/ui/TextRenderer.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.i
+.PHONY : src/ui/TextRenderer.cpp.i
+
+src/ui/TextRenderer.s: src/ui/TextRenderer.cpp.s
+
+.PHONY : src/ui/TextRenderer.s
+
+# target to generate assembly for a file
+src/ui/TextRenderer.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.s
+.PHONY : src/ui/TextRenderer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -432,6 +459,9 @@ help:
 	@echo "... src/model/ModelManager.o"
 	@echo "... src/model/ModelManager.i"
 	@echo "... src/model/ModelManager.s"
+	@echo "... src/ui/TextRenderer.o"
+	@echo "... src/ui/TextRenderer.i"
+	@echo "... src/ui/TextRenderer.s"
 .PHONY : help
 
 

@@ -7,9 +7,12 @@ CMakeFiles/hmi_scene.dir/main.cpp.o
  ../include/controller/ModelController.hpp
  ../include/controller/UDPDataManager.hpp
  ../include/importer/ModelImporter.hpp
+ ../include/loader/GLTFLoader.hpp
  ../include/model/BaseModel.hpp
  ../include/model/ImportedModel.hpp
  ../include/model/ModelManager.hpp
+ ../include/tiny_gltf.h
+ ../include/ui/TextRenderer.hpp
  /home/good/workspace/jili_hmi/hmi/main.cpp
  /usr/include/jsoncpp/json/allocator.h
  /usr/include/jsoncpp/json/autolink.h
@@ -29,9 +32,12 @@ CMakeFiles/hmi_scene.dir/src/Scene.cpp.o
  ../include/controller/ModelController.hpp
  ../include/controller/UDPDataManager.hpp
  ../include/importer/ModelImporter.hpp
+ ../include/loader/GLTFLoader.hpp
  ../include/model/BaseModel.hpp
  ../include/model/ImportedModel.hpp
  ../include/model/ModelManager.hpp
+ ../include/tiny_gltf.h
+ ../include/ui/TextRenderer.hpp
  /home/good/workspace/jili_hmi/hmi/src/Scene.cpp
  /usr/include/jsoncpp/json/allocator.h
  /usr/include/jsoncpp/json/autolink.h
@@ -51,9 +57,12 @@ CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o
  ../include/controller/ModelController.hpp
  ../include/controller/UDPDataManager.hpp
  ../include/importer/ModelImporter.hpp
+ ../include/loader/GLTFLoader.hpp
  ../include/model/BaseModel.hpp
  ../include/model/ImportedModel.hpp
  ../include/model/ModelManager.hpp
+ ../include/tiny_gltf.h
+ ../include/ui/TextRenderer.hpp
  /home/good/workspace/jili_hmi/hmi/src/controller/UDPDataManager.cpp
  /usr/include/jsoncpp/json/allocator.h
  /usr/include/jsoncpp/json/autolink.h
@@ -101,12 +110,40 @@ CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o
  ../include/model/BaseModel.hpp
  /home/good/workspace/jili_hmi/hmi/src/model/BaseModel.cpp
 CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o
+ ../include/tiny_gltf.h
+ /home/good/workspace/jili_hmi/hmi/include/loader/GLTFLoader.hpp
  /home/good/workspace/jili_hmi/hmi/include/model/BaseModel.hpp
  /home/good/workspace/jili_hmi/hmi/include/model/ImportedModel.hpp
  /home/good/workspace/jili_hmi/hmi/src/model/ImportedModel.cpp
+ /usr/include/jsoncpp/json/allocator.h
+ /usr/include/jsoncpp/json/autolink.h
+ /usr/include/jsoncpp/json/config.h
+ /usr/include/jsoncpp/json/features.h
+ /usr/include/jsoncpp/json/forwards.h
+ /usr/include/jsoncpp/json/json.h
+ /usr/include/jsoncpp/json/reader.h
+ /usr/include/jsoncpp/json/value.h
+ /usr/include/jsoncpp/json/version.h
+ /usr/include/jsoncpp/json/writer.h
 CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o
  ../include/importer/ModelImporter.hpp
+ ../include/loader/GLTFLoader.hpp
  ../include/model/BaseModel.hpp
  ../include/model/ImportedModel.hpp
  ../include/model/ModelManager.hpp
+ ../include/tiny_gltf.h
  /home/good/workspace/jili_hmi/hmi/src/model/ModelManager.cpp
+ /usr/include/jsoncpp/json/allocator.h
+ /usr/include/jsoncpp/json/autolink.h
+ /usr/include/jsoncpp/json/config.h
+ /usr/include/jsoncpp/json/features.h
+ /usr/include/jsoncpp/json/forwards.h
+ /usr/include/jsoncpp/json/json.h
+ /usr/include/jsoncpp/json/reader.h
+ /usr/include/jsoncpp/json/value.h
+ /usr/include/jsoncpp/json/version.h
+ /usr/include/jsoncpp/json/writer.h
+CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o
+ ../include/third_party/stb_truetype.h
+ ../include/ui/TextRenderer.hpp
+ /home/good/workspace/jili_hmi/hmi/src/ui/TextRenderer.cpp

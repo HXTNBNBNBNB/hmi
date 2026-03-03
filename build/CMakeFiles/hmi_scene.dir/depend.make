@@ -6,9 +6,12 @@ CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/Scene.hpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/controller/ModelController.hpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/controller/UDPDataManager.hpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/importer/ModelImporter.hpp
+CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/loader/GLTFLoader.hpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/model/BaseModel.hpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/model/ImportedModel.hpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/model/ModelManager.hpp
+CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/tiny_gltf.h
+CMakeFiles/hmi_scene.dir/main.cpp.o: ../include/ui/TextRenderer.hpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: ../main.cpp
 CMakeFiles/hmi_scene.dir/main.cpp.o: /usr/include/jsoncpp/json/allocator.h
 CMakeFiles/hmi_scene.dir/main.cpp.o: /usr/include/jsoncpp/json/autolink.h
@@ -28,9 +31,12 @@ CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/Scene.hpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/controller/ModelController.hpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/controller/UDPDataManager.hpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/importer/ModelImporter.hpp
+CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/loader/GLTFLoader.hpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/model/BaseModel.hpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/model/ImportedModel.hpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/model/ModelManager.hpp
+CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/tiny_gltf.h
+CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../include/ui/TextRenderer.hpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../src/Scene.cpp
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: /usr/include/jsoncpp/json/allocator.h
 CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: /usr/include/jsoncpp/json/autolink.h
@@ -50,9 +56,12 @@ CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/Scene.h
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/controller/ModelController.hpp
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/controller/UDPDataManager.hpp
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/importer/ModelImporter.hpp
+CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/loader/GLTFLoader.hpp
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/model/BaseModel.hpp
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/model/ImportedModel.hpp
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/model/ModelManager.hpp
+CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/tiny_gltf.h
+CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../include/ui/TextRenderer.hpp
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../src/controller/UDPDataManager.cpp
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: /usr/include/jsoncpp/json/allocator.h
 CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: /usr/include/jsoncpp/json/autolink.h
@@ -100,13 +109,41 @@ CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o: /usr/include/jsoncpp/json/
 CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o: ../include/model/BaseModel.hpp
 CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o: ../src/model/BaseModel.cpp
 
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: ../include/tiny_gltf.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: ../include/loader/GLTFLoader.hpp
 CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: ../include/model/BaseModel.hpp
 CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: ../include/model/ImportedModel.hpp
 CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: ../src/model/ImportedModel.cpp
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/allocator.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/autolink.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/config.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/features.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/forwards.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/json.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/reader.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/value.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/version.h
+CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: /usr/include/jsoncpp/json/writer.h
 
 CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../include/importer/ModelImporter.hpp
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../include/loader/GLTFLoader.hpp
 CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../include/model/BaseModel.hpp
 CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../include/model/ImportedModel.hpp
 CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../include/model/ModelManager.hpp
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../include/tiny_gltf.h
 CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../src/model/ModelManager.cpp
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/allocator.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/autolink.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/config.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/features.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/forwards.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/json.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/reader.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/value.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/version.h
+CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: /usr/include/jsoncpp/json/writer.h
+
+CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o: ../include/third_party/stb_truetype.h
+CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o: ../include/ui/TextRenderer.hpp
+CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o: ../src/ui/TextRenderer.cpp
 

@@ -611,3 +611,138 @@ bool GLTFLoader::decodeDracoPrimitive(int draco_buffer_view,
     return true;
 }
 #endif
+
+// 获取材质数量
+size_t GLTFLoader::getMaterialCount() const {
+    return is_loaded_ ? gltf_model_.materials.size() : 0;
+}
+
+// 获取 PBR 材质
+bool GLTFLoader::getMaterial(int material_index, PBRMaterial& material) {
+    if (!is_loaded_ || material_index < 0 ||
+        material_index >= static_cast<int>(gltf_model_.materials.size())) {
+        return false;
+    }
+
+    const auto& mat = gltf_model_.materials[material_index];
+    material.name = mat.name;
+
+    // PBR Metallic Roughness
+    const auto& pbr = mat.pbrMetallicRoughness;
+    material.baseColorFactor = glm::vec4(
+        static_cast<float>(pbr.baseColorFactor[0]),
+        static_cast<float>(pbr.baseColorFactor[1]),
+        static_cast<float>(pbr.baseColorFactor[2]),
+        static_cast<float>(pbr.baseColorFactor[3])
+    );
+    material.metallicFactor = static_cast<float>(pbr.metallicFactor);
+    material.roughnessFactor = static_cast<float>(pbr.roughnessFactor);
+
+    // Emissive - 当前 tiny_gltf.h 不支持，使用默认值
+    material.emissiveFactor = glm::vec3(0.0f);
+
+    return true;
+}
+
+// 按 primitive 分组获取子网格
+bool GLTFLoader::getSubMeshes(int mesh_index, std::vector<SubMesh>& submeshes) {
+    if (!is_loaded_ || mesh_index < 0 || mesh_index >= static_cast<int>(gltf_model_.meshes.size())) {
+        error_message_ = "Invalid mesh index: " + std::to_string(mesh_index);
+        return false;
+    }
+
+    const auto& mesh = gltf_model_.meshes[mesh_index];
+    submeshes.clear();
+    submeshes.reserve(mesh.primitives.size());
+
+    for (size_t prim_idx = 0; prim_idx < mesh.primitives.size(); ++prim_idx) {
+        const auto& primitive = mesh.primitives[prim_idx];
+        SubMesh submesh;
+        submesh.materialIndex = primitive.material;
+
+        std::vector<glm::vec3> positions;
+        std::vector<glm::vec3> normals;
+        std::vector<glm::vec2> texcoords;
+        std::vector<glm::vec4> colors;
+
+#ifdef DRACO_MESH_COMPRESSION_SUPPORTED
+        if (primitive.has_draco_extension && primitive.draco_buffer_view >= 0) {
+            if (!decodeDracoPrimitive(primitive.draco_buffer_view, positions, normals, colors, submesh.indices)) {
+                std::cerr << "Failed to decode Draco primitive " << prim_idx << std::endl;
+                continue;
+            }
+        } else
+#endif
+        {
+            auto pos_it = primitive.attributes.find("POSITION");
+            if (pos_it == primitive.attributes.end()) {
+                continue;
+            }
+
+            if (!readPositions(gltf_model_.accessors[pos_it->second], positions)) {
+                continue;
+            }
+
+            auto normal_it = primitive.attributes.find("NORMAL");
+            if (normal_it != primitive.attributes.end()) {
+                readNormals(gltf_model_.accessors[normal_it->second], normals);
+            }
+
+            auto uv_it = primitive.attributes.find("TEXCOORD_0");
+            if (uv_it != primitive.attributes.end()) {
+                readTexCoords(gltf_model_.accessors[uv_it->second], texcoords);
+            }
+
+            auto color_it = primitive.attributes.find("COLOR_0");
+            if (color_it != primitive.attributes.end()) {
+                readColors(gltf_model_.accessors[color_it->second], colors);
+            }
+
+            if (primitive.indices >= 0) {
+                readIndices(gltf_model_.accessors[primitive.indices], submesh.indices);
+            }
+        }
+
+        // 填充默认值
+        if (normals.empty() || normals.size() != positions.size()) {
+            normals.assign(positions.size(), glm::vec3(0.0f, 1.0f, 0.0f));
+        }
+        if (texcoords.empty() || texcoords.size() != positions.size()) {
+            texcoords.assign(positions.size(), glm::vec2(0.0f, 0.0f));
+        }
+
+        // 获取材质颜色作为默认顶点颜色
+        glm::vec4 mat_color(1.0f);
+        if (primitive.material >= 0 && primitive.material < static_cast<int>(gltf_model_.materials.size())) {
+            const auto& bcf = gltf_model_.materials[primitive.material].pbrMetallicRoughness.baseColorFactor;
+            mat_color = glm::vec4(bcf[0], bcf[1], bcf[2], bcf[3]);
+        }
+
+        if (colors.empty() || colors.size() != positions.size()) {
+            colors.assign(positions.size(), mat_color);
+        }
+
+        // 构建顶点数据
+        submesh.vertices.reserve(positions.size());
+        for (size_t i = 0; i < positions.size(); ++i) {
+            Vertex v;
+            v.position = positions[i];
+            v.normal = normals[i];
+            v.texCoords = texcoords[i];
+            v.color = colors[i];
+            submesh.vertices.push_back(v);
+        }
+
+        // 如果没有索引，生成顺序索引
+        if (submesh.indices.empty()) {
+            submesh.indices.reserve(positions.size());
+            for (size_t i = 0; i < positions.size(); ++i) {
+                submesh.indices.push_back(static_cast<unsigned int>(i));
+            }
+        }
+
+        submeshes.push_back(std::move(submesh));
+    }
+
+    return !submeshes.empty();
+}

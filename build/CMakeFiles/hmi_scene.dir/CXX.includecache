@@ -25,6 +25,8 @@ controller/ModelController.hpp
 ../include/controller/ModelController.hpp
 controller/UDPDataManager.hpp
 ../include/controller/UDPDataManager.hpp
+ui/TextRenderer.hpp
+../include/ui/TextRenderer.hpp
 
 ../include/controller/ModelController.hpp
 unordered_map
@@ -78,6 +80,20 @@ unordered_map
 ../model/ImportedModel.hpp
 ../include/model/ImportedModel.hpp
 
+../include/loader/GLTFLoader.hpp
+../model/BaseModel.hpp
+../include/model/BaseModel.hpp
+tiny_gltf.h
+../include/loader/tiny_gltf.h
+vector
+-
+string
+-
+draco/compression/decode.h
+-
+draco/core/decoder_buffer.h
+-
+
 ../include/model/BaseModel.hpp
 GLES2/gl2.h
 -
@@ -99,6 +115,8 @@ memory
 ../include/model/ImportedModel.hpp
 ../model/BaseModel.hpp
 ../include/model/BaseModel.hpp
+../loader/GLTFLoader.hpp
+../include/loader/GLTFLoader.hpp
 
 ../include/model/ModelManager.hpp
 unordered_map
@@ -113,6 +131,40 @@ BaseModel.hpp
 ../include/model/BaseModel.hpp
 importer/ModelImporter.hpp
 ../include/model/importer/ModelImporter.hpp
+
+../include/tiny_gltf.h
+json/json.h
+-
+cstring
+-
+map
+-
+string
+-
+vector
+-
+algorithm
+-
+iostream
+-
+fstream
+-
+sstream
+-
+cmath
+-
+cstdint
+-
+
+../include/ui/TextRenderer.hpp
+GLES2/gl2.h
+-
+string
+-
+unordered_map
+-
+vector
+-
 
 /home/good/workspace/jili_hmi/hmi/src/Scene.cpp
 Scene.hpp

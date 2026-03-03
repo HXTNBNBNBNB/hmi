@@ -106,7 +106,7 @@ int main() {
     glfwGetFramebufferSize(window, &fbW, &fbH);
     scene.resize(fbW, fbH);
 
-    FpsCounter fps(15.0);
+    FpsCounter fps(25.0);
     g_fps = &fps;
     char titleBuf[128];
 

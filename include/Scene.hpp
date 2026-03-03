@@ -12,6 +12,7 @@
 #include "model/ModelManager.hpp"
 #include "controller/ModelController.hpp"
 #include "controller/UDPDataManager.hpp"
+#include "ui/TextRenderer.hpp"
 
 class Scene {
 public:
@@ -52,8 +53,8 @@ private:
 
     // Camera
     float cameraYaw_ = 0.0f;
-    float cameraPitch_ = 40.0f;
-    float cameraDistance_ = 50.0f;
+    float cameraPitch_ = 25.0f;
+    float cameraDistance_ = 25.0f;
     glm::vec3 cameraTarget_{0.0f, 0.0f, 0.0f};
 
     // Mouse
@@ -76,6 +77,15 @@ private:
     GLint aPos_axis_ = -1;
     GLint aColor_axis_ = -1;
     GLint uVP_axis_ = -1;
+
+    // Lane lines (车道线)
+    GLuint laneVBO_ = 0;
+
+    // 文本渲染器
+    TextRenderer textRenderer_;
+
+    // 车号显示（硬编码，方便后续修改）
+    std::string vehicleId_ = "NBZS-JLPT-AT700";
 
     // 模型控制成员
     ModelController* model_controller_;

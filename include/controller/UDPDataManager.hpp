@@ -26,6 +26,7 @@ struct ProcessedUdpObstacle {
     float rotationY;      // 旋转角度
     bool has_trailer;     // 是否有车挂 只有type为truck时才有意义
     glm::vec3 size;       // 障碍物长宽高（可选，根据需要添加）
+    std::vector<std::string> warnings; // 警告信息（如有）
 };
 
 class UDPDataManager {
@@ -38,6 +39,9 @@ public:
 
     // 主线程消费更新
     void consumeUpdates(Scene& scene);
+
+    // 获取警告信息（最多3条）
+    std::vector<std::string> getWarnings() const;
 
     // 获取状态信息
     bool isRunning() const { return running_; }
@@ -68,7 +72,18 @@ private:
     std::vector<ProcessedUdpObstacle> latest_data_;
     std::atomic<bool> data_updated_{false};
 
+    // 警告信息（最多3条）
+    mutable std::mutex warnings_mutex_;
+    std::vector<std::string> warnings_;
+
     std::thread receiver_thread_;
     std::atomic<bool> running_{false};
     std::atomic<size_t> update_count_{0};
+
+    // 旋转平滑滤波器
+    std::unordered_map<std::string, float> rotation_history_;  // 存储每个障碍物的平滑后旋转值
+    float smoothing_factor_ = 0.15f;  // 平滑因子 (0-1)，越小越平滑
+
+    // 角度平滑辅助函数
+    float smoothAngle(const std::string& id, float newAngle);
 };

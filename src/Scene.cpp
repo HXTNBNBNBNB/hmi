@@ -42,8 +42,8 @@ void main() {
     float lighting = ambient + diff * 0.7;
     lighting = min(lighting, 1.0);
 
-    // 基础颜色：纯白色（可改为灰色或黑色）
-    vec3 baseColor = vec3(1.0, 1.0, 1.0);
+    // 基础颜色
+    vec3 baseColor = vec3(0.4, 0.4, 0.5);
     vec3 color = baseColor * lighting;
 
     // 远处淡出效果
@@ -103,6 +103,7 @@ Scene::~Scene() {
 
     if (planeVBO_) glDeleteBuffers(1, &planeVBO_);
     if (axisVBO_) glDeleteBuffers(1, &axisVBO_);
+    if (laneVBO_) glDeleteBuffers(1, &laneVBO_);
     if (groundProgram_) glDeleteProgram(groundProgram_);
     if (axisProgram_) glDeleteProgram(axisProgram_);
 }
@@ -207,6 +208,7 @@ bool Scene::init() {
     glBindBuffer(GL_ARRAY_BUFFER, planeVBO_);
     glBufferData(GL_ARRAY_BUFFER, sizeof(planeVertices), planeVertices, GL_STATIC_DRAW);
 
+#if 0
     // 坐标轴几何体
     float axisLen = 1.5f;
     float axisVertices[] = {
@@ -218,10 +220,63 @@ bool Scene::init() {
     glGenBuffers(1, &axisVBO_);
     glBindBuffer(GL_ARRAY_BUFFER, axisVBO_);
     glBufferData(GL_ARRAY_BUFFER, sizeof(axisVertices), axisVertices, GL_STATIC_DRAW);
+#endif
+    // 车道线几何体 (4条线，5个车道，每条线z不同)
+    // 格式: x, y, z, r, g, b (与坐标轴相同)
+    float laneXMin = -60.0f;
+    float laneXMax = 60.0f;
+    float laneY = 0.01f;  // 略高于地面避免z-fighting
+    float laneColor[3] = {0.25f, 0.25f, 0.25f};  // 灰黑色
+    float laneZ[4] = {-6.3f, -2.0f, 2.0f, 6.3f};  // 4条分隔线
+
+    // 4条线，每条线2个顶点，每顶点6个float (pos + color)
+    float laneVertices[4 * 2 * 6];
+    for (int i = 0; i < 4; ++i) {
+        int base = i * 12;  // 每条线12个float
+        // 起点
+        laneVertices[base + 0] = laneXMin;
+        laneVertices[base + 1] = laneY;
+        laneVertices[base + 2] = laneZ[i];
+        laneVertices[base + 3] = laneColor[0];
+        laneVertices[base + 4] = laneColor[1];
+        laneVertices[base + 5] = laneColor[2];
+        // 终点
+        laneVertices[base + 6] = laneXMax;
+        laneVertices[base + 7] = laneY;
+        laneVertices[base + 8] = laneZ[i];
+        laneVertices[base + 9] = laneColor[0];
+        laneVertices[base + 10] = laneColor[1];
+        laneVertices[base + 11] = laneColor[2];
+    }
+
+    glGenBuffers(1, &laneVBO_);
+    glBindBuffer(GL_ARRAY_BUFFER, laneVBO_);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(laneVertices), laneVertices, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     glEnable(GL_DEPTH_TEST);
     glClearColor(0.08f, 0.08f, 0.10f, 1.0f);
+
+    // 初始化文本渲染器（尝试多个字体路径）
+    const char* fontPaths[] = {
+        "resources/fonts/uming.ttc",                          // 项目相对路径
+        "../resources/fonts/uming.ttc",                       // build目录运行时
+        "/usr/share/fonts/truetype/arphic/uming.ttc",         // 系统字体（Ubuntu）
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",  // Noto CJK
+        nullptr
+    };
+    bool fontLoaded = false;
+    for (int i = 0; fontPaths[i] != nullptr; ++i) {
+        if (textRenderer_.init(fontPaths[i], 32)) {
+            printf("TextRenderer: Using font %s\n", fontPaths[i]);
+            fontLoaded = true;
+            break;
+        }
+    }
+    if (!fontLoaded) {
+        fprintf(stderr, "Warning: Failed to init text renderer, no font found\n");
+    }
+    textRenderer_.setScreenSize(screenWidth_, screenHeight_);
 
     return true;
 }
@@ -230,6 +285,7 @@ void Scene::resize(int width, int height) {
     screenWidth_ = width;
     screenHeight_ = height;
     glViewport(0, 0, width, height);
+    textRenderer_.setScreenSize(width, height);
 }
 
 void Scene::render() {
@@ -258,6 +314,7 @@ void Scene::render() {
     glm::mat4 vp = projection * view;
     glUniformMatrix4fv(uVP_axis_, 1, GL_FALSE, glm::value_ptr(vp));
 
+#if 0  // 坐标轴已屏蔽
     glBindBuffer(GL_ARRAY_BUFFER, axisVBO_);
     glEnableVertexAttribArray(aPos_axis_);
     glVertexAttribPointer(aPos_axis_, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -266,6 +323,20 @@ void Scene::render() {
 
     glLineWidth(2.0f);
     glDrawArrays(GL_LINES, 0, 6);
+
+    glDisableVertexAttribArray(aPos_axis_);
+    glDisableVertexAttribArray(aColor_axis_);
+#endif
+
+    // 渲染车道线 (复用 axisProgram_)
+    glBindBuffer(GL_ARRAY_BUFFER, laneVBO_);
+    glEnableVertexAttribArray(aPos_axis_);
+    glVertexAttribPointer(aPos_axis_, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(aColor_axis_);
+    glVertexAttribPointer(aColor_axis_, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+
+    glLineWidth(5.0f);
+    glDrawArrays(GL_LINES, 0, 8);  // 4条线，每条2个顶点
 
     glDisableVertexAttribArray(aPos_axis_);
     glDisableVertexAttribArray(aColor_axis_);
@@ -281,6 +352,21 @@ void Scene::render() {
 
     // 渲染ModelManager管理的模型
     ModelManager::getInstance().renderAll(view, projection);
+
+    // 渲染2D文本 (车号和警告信息)
+    // 车号显示在屏幕中央上方
+    float centerX = screenWidth_ / 2.0f;
+    float topY = 15.0f;  // 距顶部15像素
+    textRenderer_.renderText(vehicleId_, centerX, topY, 1.4f, 1.0f, 1.0f, 1.0f, true);
+
+    // 警告信息显示在车号下方
+    auto warnings = UDPDataManager::getInstance().getWarnings();
+    float warningY = topY + 55.0f;  // 车号下方55像素开始（适应更大的车号字体）
+    for (size_t i = 0; i < warnings.size() && i < 3; ++i) {
+        // 警告用红色显示
+        textRenderer_.renderText(warnings[i], centerX, warningY, 0.8f, 1.0f, 0.3f, 0.3f, true);
+        warningY += 35.0f;  // 每行间隔35像素
+    }
 }
 
 void Scene::setModelTransform(const std::string& objectId, const ObjectState& state) {
@@ -307,20 +393,21 @@ void Scene::loadNecessaryModels() {
     std::cerr << "Failed to load person model from: " << personModelPath << std::endl;
   }
 
-  std::string otherTruckModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/otruck.glb"; // 不带挂车
+
+  std::string otherTruckModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/otruck.glb"; // 不带箱车
   if(modelManager.loadModel("otruck", otherTruckModelPath)) {
     std::cout << "Successfully loaded other truck model from: " << otherTruckModelPath << std::endl;
   } else {
     std::cerr << "Failed to load other truck model from: " << otherTruckModelPath << std::endl;
   }
-
-  std::string otherWTruckModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/wtruck.glb"; // 带挂车
+#if 0 // 暂时不显示带箱车的模型 感知的判断是带不带挂 不是带不带箱
+  std::string otherWTruckModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/wtruck.glb"; // 带箱车
   if(modelManager.loadModel("wtruck", otherWTruckModelPath)) {
     std::cout << "Successfully loaded other wtruck model from: " << otherWTruckModelPath << std::endl;
   } else {
     std::cerr << "Failed to load other wtruck model from: " << otherWTruckModelPath << std::endl;
   }
-
+#endif
   std::string cubeModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/cube.glb"; // 立方体
   if(modelManager.loadModel("cube", cubeModelPath)) {
     std::cout << "Successfully loaded cube model from: " << cubeModelPath << std::endl;
@@ -369,7 +456,7 @@ void Scene::initModelsAttribute() {
   }
 
   // 后续模型设置 仅作静态展示用，不通过ModelController管理（因为后续会通过UDP动态控制它们）
-#if 1
+#if 0
   if(modelManager.hasModel("otruck")) {
     std::cout << "Other truck model found" << std::endl;
     auto otruckModel = modelManager.getModel("otruck");
@@ -530,8 +617,8 @@ void Scene::onKey(GLFWwindow* window, int key, int action) {
     }
     if (key == GLFW_KEY_R && action == GLFW_PRESS) {
         cameraYaw_ = -0.0f;
-        cameraPitch_ = 40.0f;
-        cameraDistance_ = 50.0f;
+        cameraPitch_ = 25.0f;
+        cameraDistance_ = 25.0f;
         cameraTarget_ = glm::vec3(0.0f);
     }
 }
@@ -550,11 +637,14 @@ void Scene::updateFromUdpData(const std::vector<ProcessedUdpObstacle>& obstacles
     // 确定模型类型和实例ID
     std::string modelId;
     if (obs.type == "truck") {
+      modelId = "otruck"; // 默认使用不带挂车的模型
+#if 0
       if(obs.has_trailer) {
         modelId = "wtruck"; // 带挂车的卡车
       } else {
         modelId = "otruck"; // 不带挂车的卡车
       }
+#endif
     } else if (obs.type == "pedestrian") {
       modelId = "person";
     } else {
@@ -590,7 +680,6 @@ void Scene::updateFromUdpData(const std::vector<ProcessedUdpObstacle>& obstacles
       float target_yaw = obs.rotationY;            // 希望的朝向（绕Y轴，+X=0°）
       float model_offset = 180.0f;                 // 模型自身朝向偏差
       float final_yaw = target_yaw - model_offset; // 补偿后应设置的旋转
-
       state.rotation = glm::vec3(0.0f, final_yaw, 0.0f);
     } else if(obs.type == "pedestrian"){ // pedestrian
       state.position = glm::vec3(-obs.position.x + 8.0f, 0.0f, obs.position.y);

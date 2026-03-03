@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/good/workspace/jili_hmi/hmi/src/model/BaseModel.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o"
   "/home/good/workspace/jili_hmi/hmi/src/model/ImportedModel.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o"
   "/home/good/workspace/jili_hmi/hmi/src/model/ModelManager.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o"
+  "/home/good/workspace/jili_hmi/hmi/src/ui/TextRenderer.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

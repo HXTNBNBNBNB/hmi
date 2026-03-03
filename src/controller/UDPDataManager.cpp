@@ -7,8 +7,38 @@
 #include <cerrno>
 #include <fcntl.h>
 #include <functional>
+#include <cmath>
 
 UDPDataManager* UDPDataManager::instance_ = nullptr;
+
+// 角度平滑：处理角度环绕问题并应用指数平滑
+float UDPDataManager::smoothAngle(const std::string& id, float newAngle) {
+    auto it = rotation_history_.find(id);
+    if (it == rotation_history_.end()) {
+        // 首次出现，直接使用新值
+        rotation_history_[id] = newAngle;
+        return newAngle;
+    }
+
+    float oldAngle = it->second;
+
+    // 处理角度环绕 (-180 到 180 或 0 到 360)
+    float diff = newAngle - oldAngle;
+
+    // 将差值归一化到 [-180, 180]
+    while (diff > 180.0f) diff -= 360.0f;
+    while (diff < -180.0f) diff += 360.0f;
+
+    // 指数平滑
+    float smoothedAngle = oldAngle + diff * smoothing_factor_;
+
+    // 归一化结果
+    while (smoothedAngle > 360.0f) smoothedAngle -= 360.0f;
+    while (smoothedAngle < 0.0f) smoothedAngle += 360.0f;
+
+    rotation_history_[id] = smoothedAngle;
+    return smoothedAngle;
+}
 
 UDPDataManager& UDPDataManager::getInstance() {
     if (!instance_) {
@@ -152,6 +182,18 @@ bool UDPDataManager::parseJsonData(const std::string& jsonStr) {
         return false;
     }
 
+    // 解析警告信息（最多3条）- 从 alarms 数组提取 text 字段
+    if (root.isMember("alarms") && root["alarms"].isArray()) {
+        std::lock_guard<std::mutex> lock(warnings_mutex_);
+        warnings_.clear();
+        const Json::Value& alarmsArray = root["alarms"];
+        for (Json::ArrayIndex i = 0; i < alarmsArray.size() && i < 3; ++i) {
+            if (alarmsArray[i].isMember("text") && alarmsArray[i]["text"].isString()) {
+                warnings_.push_back(alarmsArray[i]["text"].asString());
+            }
+        }
+    }
+
     // 检查是否有障碍物数据
     const Json::Value& obstacles = root["obstacles"];
     if (!obstacles.isArray()) {
@@ -190,7 +232,16 @@ bool UDPDataManager::parseJsonData(const std::string& jsonStr) {
         pobs.has_trailer = has_trailer; // 只有truck类型才需要用到车挂信息 区分使用的模型
         pobs.position = glm::vec3(convertedPos.x, convertedPos.y, convertedPos.z);
         pobs.size = glm::vec3(obs["length"].asFloat() * 0.4, obs["width"].asFloat() * 0.4, obs["height"].asFloat() * 0.4); // 根据实际情况调整比例
-        pobs.rotationY = obs.isMember("rotationY") ? obs["rotationY"].asFloat() : 0.0f; // 默认旋转角度为0
+
+        if(obs.isMember("")) {
+          
+        }
+
+        // 对旋转角度应用平滑滤波
+        float rawRotation = obs.isMember("rotationY") ? obs["rotationY"].asFloat() : 0.0f;
+        std::string smoothKey = type + id;  // 使用 type+id 作为唯一标识
+        pobs.rotationY = smoothAngle(smoothKey, rawRotation);
+
         processed_obstacles.push_back(pobs);
         // std::cout << "Processed obstacle: " << pobs.type << " " << pobs.position.x << " " << pobs.position.y << " " << pobs.position.z;
         // std::cout << "  Size: " << pobs.size.x << " " << pobs.size.y << " " << pobs.size.z << std::endl;
@@ -213,4 +264,9 @@ void UDPDataManager::consumeUpdates(Scene& scene) {
         scene.updateFromUdpData(newData);
         //std::cout << "UDPDataManager: Applied " << newData.size() << " updates" << std::endl;
     }
+}
+
+std::vector<std::string> UDPDataManager::getWarnings() const {
+    std::lock_guard<std::mutex> lock(warnings_mutex_);
+    return warnings_;
 }
