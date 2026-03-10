@@ -32,6 +32,7 @@ add_executable(hmi_scene
     src/controller/ModelController.cpp
     src/controller/UDPDataManager.cpp
     src/ui/TextRenderer.cpp
+    src/audioplayder/AudioPlayer.cpp
 )
 
 target_include_directories(hmi_scene PRIVATE
@@ -59,6 +60,9 @@ target_compile_options(hmi_scene PRIVATE
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(JSONCPP REQUIRED jsoncpp)
 
+# 添加ALSA音频支持
+pkg_check_modules(ALSA REQUIRED alsa)
+
 # 添加Draco支持
 find_library(DRACO_LIBRARY NAMES draco PATHS /usr/local/lib)
 find_path(DRACO_INCLUDE_DIR NAMES draco/draco_features.h PATHS /usr/local/include)
@@ -69,15 +73,19 @@ target_link_libraries(hmi_scene PRIVATE
     ${GLFW3_LIBRARIES}
     ${EGL_LIBRARIES}
     ${GLESV2_LIBRARIES}
+    ${ALSA_LIBRARIES}
     Threads::Threads
 )
 
 target_include_directories(hmi_scene PRIVATE
     ${JSONCPP_INCLUDE_DIRS}
     ${DRACO_INCLUDE_DIR}
+    ${ALSA_INCLUDE_DIRS}
     include
+    include/audioplayder
     include/loader
     include/importer
+    include/third_party
     ${GLFW3_INCLUDE_DIRS}
     ${EGL_INCLUDE_DIRS}
     ${GLESV2_INCLUDE_DIRS}

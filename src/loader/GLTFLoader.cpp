@@ -108,7 +108,7 @@ bool GLTFLoader::getMeshData(int mesh_index, std::vector<Vertex>& vertices, std:
     // RK3568 内存预算：限制总顶点数防止 OOM
     // 4.4M 顶点 * 32 bytes/vertex = ~140MB，超出 RK3568 可用内存
     // 500K 顶点 * 32 bytes = ~16MB，安全范围
-    const size_t VERTEX_BUDGET = 500000;
+    const size_t VERTEX_BUDGET = 5000000;
     size_t budget_remaining = VERTEX_BUDGET;
 
     // 先按 accessor 声明的顶点数对 primitives 排序，优先加载小图元

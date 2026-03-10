@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/good/workspace/jili_hmi/hmi/include -I/home/good/workspace/jili_hmi/hmi/include/loader -I/home/good/workspace/jili_hmi/hmi/include/importer -I/usr/include/jsoncpp 
+CXX_INCLUDES = -I/home/good/workspace/jili_hmi/hmi/include -I/home/good/workspace/jili_hmi/hmi/include/loader -I/home/good/workspace/jili_hmi/hmi/include/importer -I/usr/include/jsoncpp -I/home/good/workspace/jili_hmi/hmi/include/audioplayder -I/home/good/workspace/jili_hmi/hmi/include/third_party 
 

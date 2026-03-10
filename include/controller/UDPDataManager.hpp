@@ -26,7 +26,13 @@ struct ProcessedUdpObstacle {
     float rotationY;      // 旋转角度
     bool has_trailer;     // 是否有车挂 只有type为truck时才有意义
     glm::vec3 size;       // 障碍物长宽高（可选，根据需要添加）
-    std::vector<std::string> warnings; // 警告信息（如有）
+};
+
+struct VoiceAlarm {
+    std::string direction; // 方位
+    std::string type; // "low"、"medium"、"high"
+    float distance; // 距离
+    int priority; // 声音报警优先级 1-3
 };
 
 class UDPDataManager {
@@ -42,6 +48,9 @@ public:
 
     // 获取警告信息（最多3条）
     std::vector<std::string> getWarnings() const;
+
+    // 消费一次声音报警（读取并清除，线程安全；无新报警时返回 false）
+    bool tryConsumeVoiceAlarm(VoiceAlarm& out);
 
     // 获取状态信息
     bool isRunning() const { return running_; }
@@ -75,6 +84,10 @@ private:
     // 警告信息（最多3条）
     mutable std::mutex warnings_mutex_;
     std::vector<std::string> warnings_;
+
+    VoiceAlarm voice_alarm_;          // 声音报警信息
+    bool voice_alarm_pending_{false};   // 是否有待消费的报警
+    mutable std::mutex voice_alarm_mutex_; // 保护 voice_alarm_ 读写
 
     std::thread receiver_thread_;
     std::atomic<bool> running_{false};

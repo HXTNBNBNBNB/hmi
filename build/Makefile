@@ -204,6 +204,33 @@ src/Scene.cpp.s:
 	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/Scene.cpp.s
 .PHONY : src/Scene.cpp.s
 
+src/audioplayder/AudioPlayer.o: src/audioplayder/AudioPlayer.cpp.o
+
+.PHONY : src/audioplayder/AudioPlayer.o
+
+# target to build an object file
+src/audioplayder/AudioPlayer.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o
+.PHONY : src/audioplayder/AudioPlayer.cpp.o
+
+src/audioplayder/AudioPlayer.i: src/audioplayder/AudioPlayer.cpp.i
+
+.PHONY : src/audioplayder/AudioPlayer.i
+
+# target to preprocess a source file
+src/audioplayder/AudioPlayer.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.i
+.PHONY : src/audioplayder/AudioPlayer.cpp.i
+
+src/audioplayder/AudioPlayer.s: src/audioplayder/AudioPlayer.cpp.s
+
+.PHONY : src/audioplayder/AudioPlayer.s
+
+# target to generate assembly for a file
+src/audioplayder/AudioPlayer.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.s
+.PHONY : src/audioplayder/AudioPlayer.cpp.s
+
 src/controller/ModelController.o: src/controller/ModelController.cpp.o
 
 .PHONY : src/controller/ModelController.o
@@ -438,6 +465,9 @@ help:
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"
+	@echo "... src/audioplayder/AudioPlayer.o"
+	@echo "... src/audioplayder/AudioPlayer.i"
+	@echo "... src/audioplayder/AudioPlayer.s"
 	@echo "... src/controller/ModelController.o"
 	@echo "... src/controller/ModelController.i"
 	@echo "... src/controller/ModelController.s"

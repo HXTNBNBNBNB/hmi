@@ -115,10 +115,10 @@ GLuint TextRenderer::createProgram(const char* vertSrc, const char* fragSrc) {
 // UTF-8 解码
 uint32_t TextRenderer::decodeUTF8(const char*& ptr, const char* end) {
     if (ptr >= end) return 0;
-    
+
     unsigned char c = static_cast<unsigned char>(*ptr);
     uint32_t codepoint = 0;
-    
+
     if ((c & 0x80) == 0) {
         // ASCII
         codepoint = c;
@@ -148,11 +148,11 @@ uint32_t TextRenderer::decodeUTF8(const char*& ptr, const char* end) {
         ptr++;
         return 0;
     }
-    
+
     return codepoint;
 }
 
-bool TextRenderer::init(const std::string& fontPath, int fontSize) {
+bool TextRenderer::init(const std::string& fontPath, int fontSize, const std::string& fallbackFontPath) {
     fontSize_ = fontSize;
 
     program_ = createProgram(textVertSrc, textFragSrc);
@@ -166,17 +166,16 @@ bool TextRenderer::init(const std::string& fontPath, int fontSize) {
 
     glGenBuffers(1, &vbo_);
 
-    return loadFont(fontPath);
+    return loadFont(fontPath, fallbackFontPath);
 }
 
-bool TextRenderer::loadFont(const std::string& fontPath) {
-    // 读取字体文件
+bool TextRenderer::loadFont(const std::string& fontPath, const std::string& fallbackFontPath) {
+    // --- 主字体 ---
     std::ifstream file(fontPath, std::ios::binary | std::ios::ate);
     if (!file.is_open()) {
         fprintf(stderr, "Failed to open font file: %s\n", fontPath.c_str());
         return false;
     }
-
     std::streamsize size = file.tellg();
     file.seekg(0, std::ios::beg);
     std::vector<unsigned char> fontBuffer(size);
@@ -186,99 +185,100 @@ bool TextRenderer::loadFont(const std::string& fontPath) {
     }
     file.close();
 
-    // 初始化 stb_truetype (处理 TTC 文件)
     stbtt_fontinfo font;
     int fontOffset = stbtt_GetFontOffsetForIndex(fontBuffer.data(), 0);
     if (fontOffset < 0) fontOffset = 0;
-    
     if (!stbtt_InitFont(&font, fontBuffer.data(), fontOffset)) {
         fprintf(stderr, "Failed to init font\n");
         return false;
     }
-
     float scale = stbtt_ScaleForPixelHeight(&font, static_cast<float>(fontSize_));
 
-    // 收集所有要加载的字符 (ASCII + 常用中文)
-    std::vector<uint32_t> charsToLoad;
-    
-    // ASCII 32-126
-    for (int c = 32; c < 127; ++c) {
-        charsToLoad.push_back(c);
+    // --- 备用字体（可选）---
+    std::vector<unsigned char> fallbackBuffer;
+    stbtt_fontinfo fallbackFont;
+    float fallbackScale = 0.0f;
+    bool hasFallback = false;
+    if (!fallbackFontPath.empty()) {
+        std::ifstream ff(fallbackFontPath, std::ios::binary | std::ios::ate);
+        if (ff.is_open()) {
+            std::streamsize fsize = ff.tellg();
+            ff.seekg(0, std::ios::beg);
+            fallbackBuffer.resize(fsize);
+            if (ff.read(reinterpret_cast<char*>(fallbackBuffer.data()), fsize)) {
+                int foffset = stbtt_GetFontOffsetForIndex(fallbackBuffer.data(), 0);
+                if (foffset < 0) foffset = 0;
+                if (stbtt_InitFont(&fallbackFont, fallbackBuffer.data(), foffset)) {
+                    fallbackScale = stbtt_ScaleForPixelHeight(&fallbackFont, static_cast<float>(fontSize_));
+                    hasFallback = true;
+                    printf("TextRenderer: Fallback font loaded: %s\n", fallbackFontPath.c_str());
+                }
+            }
+        }
     }
-    
-    // 常用中文字符
+
+    // --- 收集所有要加载的字符 (ASCII + 常用中文) ---
+    std::vector<uint32_t> charsToLoad;
+    for (int c = 32; c < 127; ++c) charsToLoad.push_back(c);
     const char* ptr = commonChineseChars;
     const char* end = ptr + strlen(commonChineseChars);
     while (ptr < end) {
         uint32_t cp = decodeUTF8(ptr, end);
-        if (cp > 127) {
-            charsToLoad.push_back(cp);
-        }
+        if (cp > 127) charsToLoad.push_back(cp);
     }
 
-    // 计算纹理atlas大小
+    // --- 构建字体 Atlas ---
     atlasWidth_ = 2048;
     atlasHeight_ = 2048;
-
     std::vector<unsigned char> atlasData(atlasWidth_ * atlasHeight_, 0);
-
-    int x = 0, y = 0;
-    int rowHeight = 0;
-    int loadedCount = 0;
+    int x = 0, y = 0, rowHeight = 0, loadedCount = 0;
 
     for (uint32_t codepoint : charsToLoad) {
-        int glyphIndex = stbtt_FindGlyphIndex(&font, codepoint);
-        if (glyphIndex == 0 && codepoint > 127) continue;  // 字体中没有此字符
-        
-        int w, h, xoff, yoff;
-        unsigned char* bitmap = stbtt_GetCodepointBitmap(&font, 0, scale, codepoint, &w, &h, &xoff, &yoff);
+        int w = 0, h = 0, xoff = 0, yoff = 0;
+        unsigned char* bitmap = nullptr;
+        stbtt_fontinfo* usedFont = &font;
+        float usedScale = scale;
 
-        if (!bitmap) continue;
-        
+        // 尝试主字体
+        if (stbtt_FindGlyphIndex(&font, codepoint) != 0) {
+            bitmap = stbtt_GetCodepointBitmap(&font, 0, scale, codepoint, &w, &h, &xoff, &yoff);
+        }
+        // 主字体无此字形时尝试备用字体
+        if (!bitmap && hasFallback && stbtt_FindGlyphIndex(&fallbackFont, codepoint) != 0) {
+            bitmap = stbtt_GetCodepointBitmap(&fallbackFont, 0, fallbackScale, codepoint, &w, &h, &xoff, &yoff);
+            usedFont = &fallbackFont;
+            usedScale = fallbackScale;
+        }
+
+        if (!bitmap) continue; // 两个字体都没有此字形，跳过
+
         if (w == 0 || h == 0) {
             // 空格等不可见字符
             int advance, lsb;
-            stbtt_GetCodepointHMetrics(&font, codepoint, &advance, &lsb);
-            
+            stbtt_GetCodepointHMetrics(usedFont, codepoint, &advance, &lsb);
             CharacterInfo ci;
-            ci.ax = advance * scale;
-            ci.ay = 0;
-            ci.bw = 0;
-            ci.bh = 0;
-            ci.bl = 0;
-            ci.bt = 0;
-            ci.tx = 0;
-            ci.ty = 0;
+            ci.ax = advance * usedScale;
+            ci.ay = 0; ci.bw = 0; ci.bh = 0; ci.bl = 0; ci.bt = 0; ci.tx = 0; ci.ty = 0;
             characters_[codepoint] = ci;
-            
             stbtt_FreeBitmap(bitmap, nullptr);
             loadedCount++;
             continue;
         }
 
-        if (x + w >= atlasWidth_) {
-            x = 0;
-            y += rowHeight + 1;
-            rowHeight = 0;
-        }
-
+        if (x + w >= atlasWidth_) { x = 0; y += rowHeight + 1; rowHeight = 0; }
         if (y + h >= atlasHeight_) {
             fprintf(stderr, "Font atlas full at %d characters\n", loadedCount);
             stbtt_FreeBitmap(bitmap, nullptr);
             break;
         }
 
-        // 复制位图到atlas
-        for (int row = 0; row < h; ++row) {
+        for (int row = 0; row < h; ++row)
             memcpy(&atlasData[(y + row) * atlasWidth_ + x], &bitmap[row * w], w);
-        }
 
-        // 获取字符度量
         int advance, lsb;
-        stbtt_GetCodepointHMetrics(&font, codepoint, &advance, &lsb);
-
+        stbtt_GetCodepointHMetrics(usedFont, codepoint, &advance, &lsb);
         CharacterInfo ci;
-        ci.ax = advance * scale;
+        ci.ax = advance * usedScale;
         ci.ay = 0;
         ci.bw = static_cast<float>(w);
         ci.bh = static_cast<float>(h);
@@ -286,17 +286,15 @@ bool TextRenderer::loadFont(const std::string& fontPath) {
         ci.bt = static_cast<float>(-yoff);
         ci.tx = static_cast<float>(x) / atlasWidth_;
         ci.ty = static_cast<float>(y) / atlasHeight_;
-
         characters_[codepoint] = ci;
 
         x += w + 1;
         if (h > rowHeight) rowHeight = h;
-
         stbtt_FreeBitmap(bitmap, nullptr);
         loadedCount++;
     }
 
-    // 创建OpenGL纹理
+    // 创建 OpenGL 纹理
     glGenTextures(1, &fontTexture_);
     glBindTexture(GL_TEXTURE_2D, fontTexture_);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, atlasWidth_, atlasHeight_, 0,
@@ -320,7 +318,7 @@ float TextRenderer::getTextWidth(const std::string& text, float scale) {
     float width = 0;
     const char* ptr = text.c_str();
     const char* end = ptr + text.size();
-    
+
     while (ptr < end) {
         uint32_t cp = decodeUTF8(ptr, end);
         auto it = characters_.find(cp);
@@ -364,7 +362,7 @@ void TextRenderer::renderText(const std::string& text, float x, float y, float s
     float cursorX = x;
     const char* ptr = text.c_str();
     const char* end = ptr + text.size();
-    
+
     while (ptr < end) {
         uint32_t cp = decodeUTF8(ptr, end);
         auto it = characters_.find(cp);
@@ -388,7 +386,7 @@ void TextRenderer::renderText(const std::string& text, float x, float y, float s
             vertices.push_back(xpos);     vertices.push_back(ypos);      vertices.push_back(tx);      vertices.push_back(ty);
             vertices.push_back(xpos + w); vertices.push_back(ypos);      vertices.push_back(tx + tw); vertices.push_back(ty);
             vertices.push_back(xpos);     vertices.push_back(ypos + h);  vertices.push_back(tx);      vertices.push_back(ty + th);
-            
+
             vertices.push_back(xpos + w); vertices.push_back(ypos);      vertices.push_back(tx + tw); vertices.push_back(ty);
             vertices.push_back(xpos + w); vertices.push_back(ypos + h);  vertices.push_back(tx + tw); vertices.push_back(ty + th);
             vertices.push_back(xpos);     vertices.push_back(ypos + h);  vertices.push_back(tx);      vertices.push_back(ty + th);

@@ -12,7 +12,7 @@ ModelManager& ModelManager::getInstance() {
 }
 
 ModelManager::ModelManager()
-    : model_search_path_("./models/")
+    : model_search_path_("../resources/models/")
     , total_vertices_(0)
     , total_indices_(0)
     , total_textures_(0)
@@ -71,7 +71,7 @@ std::shared_ptr<BaseModel> ModelManager::createInstance(
     // 维护实例到模型的映射关系
     instance_to_model_[instanceId] = modelId;
 
-    std::cout << "ModelManager: Created instance '" << instanceId << "' from model '" << modelId << "'" << std::endl;
+    //std::cout << "ModelManager: Created instance '" << instanceId << "' from model '" << modelId << "'" << std::endl;
 
     return cloned;
 }
@@ -269,7 +269,7 @@ void ModelManager::destroyInstance(const std::string& instanceId) {
         }
 
         model_instances_.erase(it);
-        std::cout << "ModelManager: Destroyed instance '" << instanceId << "'" << std::endl;
+        //std::cout << "ModelManager: Destroyed instance '" << instanceId << "'" << std::endl;
     } else {
         std::cerr << "ModelManager: Instance '" << instanceId << "' not found" << std::endl;
     }

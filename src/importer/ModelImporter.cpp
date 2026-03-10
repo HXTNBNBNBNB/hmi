@@ -14,7 +14,7 @@ ModelImporter& ModelImporter::getInstance() {
 }
 
 ModelImporter::ModelImporter()
-    : model_search_path_("./models/")
+    : model_search_path_("../resources/models/")
     , total_imported_(0)
     , successful_imports_(0)
     , failed_imports_(0)

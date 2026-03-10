@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/good/workspace/jili_hmi/hmi/main.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/main.cpp.o"
   "/home/good/workspace/jili_hmi/hmi/src/FpsCounter.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o"
   "/home/good/workspace/jili_hmi/hmi/src/Scene.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/Scene.cpp.o"
+  "/home/good/workspace/jili_hmi/hmi/src/audioplayder/AudioPlayer.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o"
   "/home/good/workspace/jili_hmi/hmi/src/controller/ModelController.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o"
   "/home/good/workspace/jili_hmi/hmi/src/controller/UDPDataManager.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o"
   "/home/good/workspace/jili_hmi/hmi/src/importer/ModelImporter.cpp" "/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o"
@@ -24,6 +25,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/loader"
   "../include/importer"
   "/usr/include/jsoncpp"
+  "../include/audioplayder"
+  "../include/third_party"
   )
 
 # Targets to which this target links.

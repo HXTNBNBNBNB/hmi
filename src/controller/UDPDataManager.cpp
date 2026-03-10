@@ -193,7 +193,29 @@ bool UDPDataManager::parseJsonData(const std::string& jsonStr) {
             }
         }
     }
-
+#if 1
+    if (root.isMember("voice_alarm") &&
+    root["voice_alarm"].isMember("type") &&
+    root["voice_alarm"].isMember("priority") &&
+    root["voice_alarm"].isMember("distance") &&
+    root["voice_alarm"].isMember("direction")) {
+        std::lock_guard<std::mutex> lock(voice_alarm_mutex_);
+        voice_alarm_.type = root["voice_alarm"]["type"].asString();
+        voice_alarm_.priority = root["voice_alarm"]["priority"].asInt();
+        voice_alarm_.distance = root["voice_alarm"]["distance"].asFloat();
+        voice_alarm_.direction = root["voice_alarm"]["direction"].asString();
+        voice_alarm_pending_ = true;  // 标记有待播报警
+    } else {
+        std::lock_guard<std::mutex> lock(voice_alarm_mutex_);
+        // 只有当前无待播报警时才清除，避免覆盖未消费的报警
+        if (!voice_alarm_pending_) {
+            voice_alarm_.direction.clear();
+            voice_alarm_.distance = 0.0f;
+            voice_alarm_.priority = 0;
+            voice_alarm_.type.clear();
+        }
+    }
+#endif
     // 检查是否有障碍物数据
     const Json::Value& obstacles = root["obstacles"];
     if (!obstacles.isArray()) {
@@ -233,10 +255,6 @@ bool UDPDataManager::parseJsonData(const std::string& jsonStr) {
         pobs.position = glm::vec3(convertedPos.x, convertedPos.y, convertedPos.z);
         pobs.size = glm::vec3(obs["length"].asFloat() * 0.4, obs["width"].asFloat() * 0.4, obs["height"].asFloat() * 0.4); // 根据实际情况调整比例
 
-        if(obs.isMember("")) {
-          
-        }
-
         // 对旋转角度应用平滑滤波
         float rawRotation = obs.isMember("rotationY") ? obs["rotationY"].asFloat() : 0.0f;
         std::string smoothKey = type + id;  // 使用 type+id 作为唯一标识
@@ -250,7 +268,7 @@ bool UDPDataManager::parseJsonData(const std::string& jsonStr) {
 
     if (!processed_obstacles.empty()) {
         if (tryUpdateData(processed_obstacles)) {
-            std::cout << "UDPDataManager: Updated " << processed_obstacles.size() << " obstacles" << std::endl << std::endl;
+            // std::cout << "UDPDataManager: Updated " << processed_obstacles.size() << " obstacles" << std::endl << std::endl;
             return true;
         }
     }
@@ -269,4 +287,14 @@ void UDPDataManager::consumeUpdates(Scene& scene) {
 std::vector<std::string> UDPDataManager::getWarnings() const {
     std::lock_guard<std::mutex> lock(warnings_mutex_);
     return warnings_;
+}
+
+bool UDPDataManager::tryConsumeVoiceAlarm(VoiceAlarm& out) {
+    std::lock_guard<std::mutex> lock(voice_alarm_mutex_);
+    if (!voice_alarm_pending_) {
+        return false;
+    }
+    out = voice_alarm_;
+    voice_alarm_pending_ = false;  // 消费后清除标志，下次只有新事件才会再次触发
+    return true;
 }

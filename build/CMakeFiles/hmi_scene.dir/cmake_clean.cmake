@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/hmi_scene.dir/main.cpp.o"
   "CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o"
   "CMakeFiles/hmi_scene.dir/src/Scene.cpp.o"
+  "CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o"
   "CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o"
   "CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o"
   "CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o"

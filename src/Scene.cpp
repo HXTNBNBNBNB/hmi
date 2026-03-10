@@ -1,13 +1,37 @@
 #include "Scene.hpp"
 #include "controller/UDPDataManager.hpp"
+#include "audioplayder/AudioPlayer.hpp"
 
 #include <cstdio>
 #include <iostream>
 #include <cmath>
+#include <unordered_map>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+
+// ============================================================
+// Voice alarm lists
+// ============================================================
+// 与 Python 发送方对齐：direction/type 均为英文字符串
+// Python calc_voice_alarm 输出: direction: left|right|front|left_front|right_front
+//                          type: truck|pedestrian|other
+std::unordered_map<std::string, int> voice_map = {
+  // 方位（1-5）
+  {"left",        1},   // 左侧
+  {"right",       2},   // 右侧
+  {"front",       3},   // 前方  ✗注意: 需要 3.ogg 存在，当前资源目录缺少该文件将跳过
+  {"left_front",  4},   // 左前
+  {"right_front", 5},   // 右前
+  // 障碍物类型（8-10）
+  {"truck",       8},   // 卡车
+  {"pedestrian",  9},   // 行人
+  {"other",       10},  // 障碍物
+  // 特殊整句（11-12）- 由高优先级逐走直接使用，不在拼接序列中出现
+  {"stop_obstacle", 11}, // 停车注意障碍物
+  {"danger_stop",   12}, // 危险立即停车
+};
 
 // ============================================================
 // Shader sources
@@ -34,22 +58,22 @@ void main() {
     // 地面法线（固定向上）
     vec3 normal = vec3(0.0, 1.0, 0.0);
 
-    // ✅ 光照方向：从右上方射向左下方（Y 必须为正！）
-    vec3 lightDir = normalize(vec3(-1.0, 0.4, 0.0)); // -X 方向 + 从上往下
+    // 光照方向：偏顶部斜射，保证水平地面获得足够照度
+    vec3 lightDir = normalize(vec3(-0.5, 2.0, 0.3));
 
     float diff = max(dot(normal, lightDir), 0.0);
-    float ambient = 0.3; // 环境光
-    float lighting = ambient + diff * 0.7;
+    float ambient = 0.65; // 高环境光，保持地面整体白亮
+    float lighting = ambient + diff * 0.35;
     lighting = min(lighting, 1.0);
 
-    // 基础颜色
-    vec3 baseColor = vec3(0.4, 0.4, 0.5);
+    // 基础颜色（蓝白色地面）
+    vec3 baseColor = vec3(0.88, 0.93, 1.0);
     vec3 color = baseColor * lighting;
 
     // 远处淡出效果
     float dist = length(vWorldPos.xz);
     float fade = 1.0 - smoothstep(20.0, 30.0, dist);
-    color = mix(vec3(0.2, 0.2, 0.2), color, fade);
+    color = mix(vec3(0.75, 0.82, 0.92), color, fade);
 
     // 测试：暂时移除gamma校正
     // 线性空间 -> sRGB gamma 校正
@@ -226,7 +250,7 @@ bool Scene::init() {
     float laneXMin = -60.0f;
     float laneXMax = 60.0f;
     float laneY = 0.01f;  // 略高于地面避免z-fighting
-    float laneColor[3] = {0.25f, 0.25f, 0.25f};  // 灰黑色
+    float laneColor[3] = {0.55f, 0.55f, 0.55f};  // 灰白色
     float laneZ[4] = {-6.3f, -2.0f, 2.0f, 6.3f};  // 4条分隔线
 
     // 4条线，每条线2个顶点，每顶点6个float (pos + color)
@@ -258,17 +282,21 @@ bool Scene::init() {
     glClearColor(0.08f, 0.08f, 0.10f, 1.0f);
 
     // 初始化文本渲染器（尝试多个字体路径）
-    const char* fontPaths[] = {
-        "resources/fonts/uming.ttc",                          // 项目相对路径
-        "../resources/fonts/uming.ttc",                       // build目录运行时
-        "/usr/share/fonts/truetype/arphic/uming.ttc",         // 系统字体（Ubuntu）
-        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",  // Noto CJK
-        nullptr
+    // 主字体（CJK黑体）+ 备用字体（Latin/ASCII补充）
+    // DroidSansFallback 负责汉字方正风格，uming 负责 ASCII 字符补充
+    struct FontPair { const char* primary; const char* fallback; };
+    FontPair fontPairs[] = {
+        {"resources/fonts/DroidSansFallback.ttf",   "resources/fonts/uming.ttc"},
+        {"../resources/fonts/DroidSansFallback.ttf", "../resources/fonts/uming.ttc"},
+        {"resources/fonts/uming.ttc",               nullptr},
+        {"../resources/fonts/uming.ttc",             nullptr},
+        {nullptr, nullptr}
     };
     bool fontLoaded = false;
-    for (int i = 0; fontPaths[i] != nullptr; ++i) {
-        if (textRenderer_.init(fontPaths[i], 32)) {
-            printf("TextRenderer: Using font %s\n", fontPaths[i]);
+    for (int i = 0; fontPairs[i].primary != nullptr; ++i) {
+        std::string fb = fontPairs[i].fallback ? fontPairs[i].fallback : "";
+        if (textRenderer_.init(fontPairs[i].primary, 40, fb)) {
+            //printf("TextRenderer: Using font %s\n", fontPairs[i]);
             fontLoaded = true;
             break;
         }
@@ -367,6 +395,51 @@ void Scene::render() {
         textRenderer_.renderText(warnings[i], centerX, warningY, 0.8f, 1.0f, 0.3f, 0.3f, true);
         warningY += 35.0f;  // 每行间隔35像素
     }
+
+    // 控制音频播放
+    // 音频编号映射（basePath/*.ogg）：
+    //   0        注意（拼接头）
+    //   1-5  方位: left/right/front/left_front/right_front
+    //   6-7  距离: 10米内（6）、5米内（7）
+    //   8-10 类型: truck/pedestrian/other
+    //   12   危险立即停车（priority==3 时的独立接口）
+    // 普通拼接： {0, 方位, 距离, 类型}  e.g. {0,1,7,8} = 注意+左侧+5米内+卡车
+    // 高优先级： {12}  危险立即停车（独立整句）
+    // 每次报警事件只触发一次（tryConsumeVoiceAlarm 消费后自动清除）
+    VoiceAlarm voiceAlarm;
+    if (UDPDataManager::getInstance().tryConsumeVoiceAlarm(voiceAlarm)) {
+      if (voiceAlarm.type.size() && voiceAlarm.priority && voiceAlarm.distance > 0.0f && voiceAlarm.direction.size()) {
+        AudioPlayer& audioPlayer = AudioPlayer::getInstance();
+        auto prio = static_cast<AudioPlayer::Priority>(voiceAlarm.priority);
+
+        if (prio == AudioPlayer::Priority::HIGH) {
+          // 高优先级（<1.5m）：播放独立整句“危险立即停车”
+          audioPlayer.playAudioSequence({12}, prio, true);
+        } else {
+          // 普通拼接: 注意(0) + 方位 + 距离 + 类型
+          // 使用 find() 避免向全局 map 插入默认值
+          auto findOrSkip = [&](const std::string& key) -> int {
+            auto it = voice_map.find(key);
+            return (it != voice_map.end()) ? it->second : -1;  // -1 表示该位置跳过
+          };
+          int distNum = (voiceAlarm.distance <= 5.0f) ? 7 : 6;
+          std::vector<int> seq = {
+            0,                                    // 注意
+            findOrSkip(voiceAlarm.direction),     // 方位
+            distNum,                              // 距离阈値
+            findOrSkip(voiceAlarm.type)           // 障碍物类型
+          };
+
+          std::cout << "----------------------sequence: ";
+          for(auto it : seq) {
+            std::cout << it << " ";
+          }
+          std::cout << std::endl;
+
+          audioPlayer.playAudioSequence(seq, prio, true);
+        }
+      }
+    }
 }
 
 void Scene::setModelTransform(const std::string& objectId, const ObjectState& state) {
@@ -379,14 +452,14 @@ void Scene::loadNecessaryModels() {
   std::cout << "=== Loading every necessary models in scene ===" << std::endl;
   auto& modelManager = ModelManager::getInstance();
 
-  std::string truckModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/truck.glb";
+  std::string truckModelPath = "/opt/models/truck.glb";
   if(modelManager.loadModel("truck", truckModelPath)) {
       std::cout << "Successfully loaded truck model from: " << truckModelPath << std::endl;
   } else {
       std::cerr << "Failed to load truck model from: " << truckModelPath << std::endl;
   }
 
-  std::string personModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/person.glb";
+  std::string personModelPath = "/opt/models/person.glb";
   if(modelManager.loadModel("person", personModelPath)) {
     std::cout << "Successfully loaded person model from: " << personModelPath << std::endl;
   } else {
@@ -394,21 +467,21 @@ void Scene::loadNecessaryModels() {
   }
 
 
-  std::string otherTruckModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/otruck.glb"; // 不带箱车
+  std::string otherTruckModelPath = "/opt/models/otruck.glb"; // 不带箱车
   if(modelManager.loadModel("otruck", otherTruckModelPath)) {
     std::cout << "Successfully loaded other truck model from: " << otherTruckModelPath << std::endl;
   } else {
     std::cerr << "Failed to load other truck model from: " << otherTruckModelPath << std::endl;
   }
 #if 0 // 暂时不显示带箱车的模型 感知的判断是带不带挂 不是带不带箱
-  std::string otherWTruckModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/wtruck.glb"; // 带箱车
+  std::string otherWTruckModelPath = "/opt/models/wtruck.glb"; // 带箱车
   if(modelManager.loadModel("wtruck", otherWTruckModelPath)) {
     std::cout << "Successfully loaded other wtruck model from: " << otherWTruckModelPath << std::endl;
   } else {
     std::cerr << "Failed to load other wtruck model from: " << otherWTruckModelPath << std::endl;
   }
 #endif
-  std::string cubeModelPath = "/home/good/workspace/jili_hmi/source/models/prehandle/cube.glb"; // 立方体
+  std::string cubeModelPath = "/opt/models/cube.glb"; // 立方体
   if(modelManager.loadModel("cube", cubeModelPath)) {
     std::cout << "Successfully loaded cube model from: " << cubeModelPath << std::endl;
   } else {
@@ -433,9 +506,9 @@ void Scene::initModelsAttribute() {
     auto truckModel = modelManager.getModel("truck");
     // 设置卡车初始状态
     ObjectState truck_state;
-    truck_state.position = glm::vec3(8.456f, 0.452f, -0.824f); // (8.456f, 0.452f, -0.624f)
+    truck_state.position = glm::vec3(8.5f, -0.01f, 0.0f);
     truck_state.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-    truck_state.scale = glm::vec3(1.0f, 1.25f, 1.25f); // (0.77f, 1.0f, 1.0f)
+    truck_state.scale = glm::vec3(1.0f, 1.0f, 1.0f);
     truck_state.visible = true;
     truck_state.opacity = 1.0f;
     // 直接设置模型属性以确保立即生效
@@ -659,7 +732,7 @@ void Scene::updateFromUdpData(const std::vector<ProcessedUdpObstacle>& obstacles
     auto instance = modelManager.getModel(instanceId);
     if (!instance) {
       // 创建新实例
-      std::cout << "[UDP] Creating instance: " << instanceId << " for model: " << modelId << std::endl;
+      // std::cout << "[UDP] Creating instance: " << instanceId << " for model: " << modelId << std::endl;
       instance = modelManager.createInstance(instanceId, modelId);
       if (!instance) {
         std::cerr << "[UDP] Failed to create instance: " << instanceId << " for model: " << modelId << std::endl;
@@ -708,13 +781,12 @@ void Scene::updateFromUdpData(const std::vector<ProcessedUdpObstacle>& obstacles
     for (const auto& instanceId : instanceIds) {
       // 如果实例不在本次处理的集合中，则销毁它
       if (processedInstanceIds.find(instanceId) == processedInstanceIds.end()) {
-        std::cout << "[UDP] Destroying instance: " << instanceId << " (no longer in UDP data)" << std::endl;
+        //std::cout << "[UDP] Destroying instance: " << instanceId << " (no longer in UDP data)" << std::endl;
         modelManager.destroyInstance(instanceId);
       }
     }
   }
-
-  std::cout << "[UDP] Update completed. Active instances: " << processedInstanceIds.size() << std::endl;
+  //std::cout << "[UDP] Update completed. Active instances: " << processedInstanceIds.size() << std::endl;
 }
 
 

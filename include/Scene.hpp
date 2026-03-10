@@ -87,6 +87,9 @@ private:
     // 车号显示（硬编码，方便后续修改）
     std::string vehicleId_ = "NBZS-JLPT-AT700";
 
+    // 语音防抖：仅当 voice_alarm 变化时触发播放，避免每帧重复调用
+    std::string lastPlayedVoiceAlarmSig_;
+
     // 模型控制成员
     ModelController* model_controller_;
 };

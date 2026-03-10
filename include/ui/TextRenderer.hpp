@@ -21,7 +21,8 @@ public:
     TextRenderer();
     ~TextRenderer();
 
-    bool init(const std::string& fontPath, int fontSize = 32);
+    // fontPath: 主字体（CJK黑体）; fallbackFontPath: 备用字体（Latin/ASCII补充，可为空）
+    bool init(const std::string& fontPath, int fontSize = 32, const std::string& fallbackFontPath = "");
     void cleanup();
 
     void setScreenSize(int width, int height);
@@ -53,7 +54,7 @@ private:
     // 使用 uint32_t 作为键支持 Unicode
     std::unordered_map<uint32_t, CharacterInfo> characters_;
 
-    bool loadFont(const std::string& fontPath);
+    bool loadFont(const std::string& fontPath, const std::string& fallbackFontPath = "");
     GLuint compileShader(GLenum type, const char* source);
     GLuint createProgram(const char* vertSrc, const char* fragSrc);
 

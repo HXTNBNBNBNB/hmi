@@ -1,21 +1,21 @@
 Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_de72c/fast && /usr/bin/make -f CMakeFiles/cmTC_de72c.dir/build.make CMakeFiles/cmTC_de72c.dir/build
+Run Build Command(s):/usr/bin/make cmTC_d1bed/fast && /usr/bin/make -f CMakeFiles/cmTC_d1bed.dir/build.make CMakeFiles/cmTC_d1bed.dir/build
 make[1]: 进入目录“/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_de72c.dir/src.cxx.o
-/usr/bin/c++    -DCMAKE_HAVE_LIBC_PTHREAD   -std=gnu++17 -o CMakeFiles/cmTC_de72c.dir/src.cxx.o -c /home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_de72c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_de72c.dir/link.txt --verbose=1
-/usr/bin/c++   -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_de72c.dir/src.cxx.o  -o cmTC_de72c 
-/usr/bin/ld: CMakeFiles/cmTC_de72c.dir/src.cxx.o: in function `main':
+Building CXX object CMakeFiles/cmTC_d1bed.dir/src.cxx.o
+/usr/bin/c++    -DCMAKE_HAVE_LIBC_PTHREAD   -std=gnu++17 -o CMakeFiles/cmTC_d1bed.dir/src.cxx.o -c /home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d1bed
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d1bed.dir/link.txt --verbose=1
+/usr/bin/c++   -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_d1bed.dir/src.cxx.o  -o cmTC_d1bed 
+/usr/bin/ld: CMakeFiles/cmTC_d1bed.dir/src.cxx.o: in function `main':
 src.cxx:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.cxx:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.cxx:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_de72c.dir/build.make:87：cmTC_de72c] 错误 1
+make[1]: *** [CMakeFiles/cmTC_d1bed.dir/build.make:87：cmTC_d1bed] 错误 1
 make[1]: 离开目录“/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp”
-make: *** [Makefile:121：cmTC_de72c/fast] 错误 2
+make: *** [Makefile:121：cmTC_d1bed/fast] 错误 2
 
 
 Source file was:
@@ -41,18 +41,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_2881d/fast && /usr/bin/make -f CMakeFiles/cmTC_2881d.dir/build.make CMakeFiles/cmTC_2881d.dir/build
+Run Build Command(s):/usr/bin/make cmTC_549b9/fast && /usr/bin/make -f CMakeFiles/cmTC_549b9.dir/build.make CMakeFiles/cmTC_549b9.dir/build
 make[1]: 进入目录“/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_2881d.dir/CheckFunctionExists.cxx.o
-/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -std=gnu++17 -o CMakeFiles/cmTC_2881d.dir/CheckFunctionExists.cxx.o -c /home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_2881d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2881d.dir/link.txt --verbose=1
-/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_2881d.dir/CheckFunctionExists.cxx.o  -o cmTC_2881d  -lpthreads 
+Building CXX object CMakeFiles/cmTC_549b9.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -std=gnu++17 -o CMakeFiles/cmTC_549b9.dir/CheckFunctionExists.cxx.o -c /home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_549b9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_549b9.dir/link.txt --verbose=1
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_549b9.dir/CheckFunctionExists.cxx.o  -o cmTC_549b9  -lpthreads 
 /usr/bin/ld: 找不到 -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_2881d.dir/build.make:87：cmTC_2881d] 错误 1
+make[1]: *** [CMakeFiles/cmTC_549b9.dir/build.make:87：cmTC_549b9] 错误 1
 make[1]: 离开目录“/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/CMakeTmp”
-make: *** [Makefile:121：cmTC_2881d/fast] 错误 2
+make: *** [Makefile:121：cmTC_549b9/fast] 错误 2
 
 
 
