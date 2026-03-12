@@ -133,7 +133,7 @@ int main() {
         bool updated = fps.beginFrame();
 
         glfwPollEvents();
-        scene.render();
+        scene.render(fps.getDeltaTime());
         glfwSwapBuffers(window);
 
         fps.endFrame();

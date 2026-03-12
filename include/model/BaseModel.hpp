@@ -66,6 +66,10 @@ public:
     virtual void render(const glm::mat4& view, const glm::mat4& projection) = 0;
     virtual void update(float deltaTime) = 0;
 
+    // 平面投影阴影（可选，默认空实现）
+    virtual void renderShadow(const glm::mat4& view, const glm::mat4& projection,
+                             const glm::mat4& shadowMatrix) {}
+
     // 克隆接口 - 用于创建实例
     virtual std::shared_ptr<BaseModel> clone() const = 0;
 

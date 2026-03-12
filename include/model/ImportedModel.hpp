@@ -31,7 +31,13 @@ private:
     static GLint lightDir_loc_, viewPos_loc_;
     static bool shader_initialized_;
 
+    static GLuint shadow_program_;
+    static GLint shadow_mvp_loc_;
+    static GLint shadow_alpha_loc_;
+    static bool shadow_shader_initialized_;
+
     static void initShader();
+    static void initShadowShader();
 
 public:
     ImportedModel();
@@ -41,6 +47,8 @@ public:
     bool load(const std::string& filepath) override;
     void render(const glm::mat4& view, const glm::mat4& projection) override;
     void update(float deltaTime) override;
+    void renderShadow(const glm::mat4& view, const glm::mat4& projection,
+                     const glm::mat4& shadowMatrix) override;
 
     // 特有功能
     void setSourceFile(const std::string& filepath);

@@ -6,6 +6,7 @@ FpsCounter::FpsCounter(double targetFps)
     , targetFrameTime_(1.0 / targetFps)
     , intervalStart_(Clock::now())
     , frameStart_(Clock::now())
+    , lastFrameTime_(Clock::now())
 {
 }
 
@@ -16,6 +17,15 @@ void FpsCounter::setTargetFps(double target) {
 
 bool FpsCounter::beginFrame() {
     frameStart_ = Clock::now();
+    if (firstFrame_) {
+        deltaTime_ = targetFrameTime_;
+        lastFrameTime_ = frameStart_;
+        firstFrame_ = false;
+    } else {
+        deltaTime_ = std::chrono::duration<double>(frameStart_ - lastFrameTime_).count();
+        lastFrameTime_ = frameStart_;
+        if (deltaTime_ <= 0.0 || deltaTime_ > 0.5) deltaTime_ = targetFrameTime_;
+    }
     frameCount_++;
 
     auto elapsed = std::chrono::duration<double>(frameStart_ - intervalStart_).count();

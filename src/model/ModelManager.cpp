@@ -164,6 +164,16 @@ void ModelManager::renderAll(const glm::mat4& view, const glm::mat4& projection)
     }
 }
 
+void ModelManager::renderShadows(const glm::mat4& view, const glm::mat4& projection,
+                                const glm::mat4& shadowMatrix) {
+    for (auto& pair : model_instances_) {
+        auto model = pair.second;
+        if (model && model->isVisible()) {
+            model->renderShadow(view, projection, shadowMatrix);
+        }
+    }
+}
+
 void ModelManager::renderModel(const std::string& id, const glm::mat4& view, const glm::mat4& projection) {
     auto model = getModel(id);
     if (model && model->isVisible()) {

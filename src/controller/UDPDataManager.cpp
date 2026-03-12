@@ -241,7 +241,7 @@ bool UDPDataManager::parseJsonData(const std::string& jsonStr) {
         std::string id = obs["id"].asString();
         bool has_trailer = obs.isMember("has_trailer") ? obs["has_trailer"].asBool() : false;
 
-        // 转换坐标 比例尺0.1，根据实际情况调整
+        // 转换坐标 比例尺0.4，根据实际情况调整
         glm::vec3 convertedPos = glm::vec3(
             obs["x"].asFloat() * 0.4,
             obs["y"].asFloat() * 0.4,

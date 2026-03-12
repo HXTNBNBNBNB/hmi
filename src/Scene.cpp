@@ -3,8 +3,8 @@
 #include "audioplayder/AudioPlayer.hpp"
 
 #include <cstdio>
-#include <iostream>
 #include <cmath>
+#include <iostream>
 #include <unordered_map>
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -281,22 +281,24 @@ bool Scene::init() {
     glEnable(GL_DEPTH_TEST);
     glClearColor(0.08f, 0.08f, 0.10f, 1.0f);
 
-    // 初始化文本渲染器（尝试多个字体路径）
-    // 主字体（CJK黑体）+ 备用字体（Latin/ASCII补充）
-    // DroidSansFallback 负责汉字方正风格，uming 负责 ASCII 字符补充
+    // 初始化文本渲染器：优先使用笔画粗细均匀的字体
     struct FontPair { const char* primary; const char* fallback; };
     FontPair fontPairs[] = {
+        {"resources/fonts/NotoSansCJK-Regular.ttc", nullptr},
+        {"../resources/fonts/NotoSansCJK-Regular.ttc", nullptr},
+        {"/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.otf", nullptr},
+        {"/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc", nullptr},
         {"resources/fonts/DroidSansFallback.ttf",   "resources/fonts/uming.ttc"},
         {"../resources/fonts/DroidSansFallback.ttf", "../resources/fonts/uming.ttc"},
         {"resources/fonts/uming.ttc",               nullptr},
-        {"../resources/fonts/uming.ttc",             nullptr},
+        {"../resources/fonts/uming.ttc",            nullptr},
         {nullptr, nullptr}
     };
     bool fontLoaded = false;
     for (int i = 0; fontPairs[i].primary != nullptr; ++i) {
         std::string fb = fontPairs[i].fallback ? fontPairs[i].fallback : "";
-        if (textRenderer_.init(fontPairs[i].primary, 40, fb)) {
-            //printf("TextRenderer: Using font %s\n", fontPairs[i]);
+        std::string warnFont = fb.empty() ? "" : fb;  // 警告用另一套字体（如 uming）区分
+        if (textRenderer_.init(fontPairs[i].primary, 40, fb, warnFont)) {
             fontLoaded = true;
             break;
         }
@@ -316,7 +318,7 @@ void Scene::resize(int width, int height) {
     textRenderer_.setScreenSize(width, height);
 }
 
-void Scene::render() {
+void Scene::render(double deltaTime) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     float aspect = static_cast<float>(screenWidth_) / static_cast<float>(screenHeight_);
@@ -370,12 +372,32 @@ void Scene::render() {
     glDisableVertexAttribArray(aColor_axis_);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
+    // 平面投影阴影：光照在 truck 正上方，高度 1，Z=0，方向竖直向下
+    glm::vec3 lightDir = glm::normalize(glm::vec3(0.0f, 1.0f, 0.0f));
+    const float shadowBias = 0.012f;  // 抬高阴影平面，避免与地面 z-fighting 导致线条闪烁
+    glm::mat4 shadowMatrix(
+        glm::vec4(1, 0, 0, 0),
+        glm::vec4(-lightDir.x / lightDir.y, 0, -lightDir.z / lightDir.y, 0),
+        glm::vec4(0, 0, 1, 0),
+        glm::vec4(lightDir.x * shadowBias / lightDir.y, shadowBias,
+                  lightDir.z * shadowBias / lightDir.y, 1));
+
+    GLboolean wasCull = glIsEnabled(GL_CULL_FACE);
+    glDisable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glDepthMask(GL_FALSE);  // 阴影不写深度，只做颜色混合，避免阴影内线条闪烁
+    ModelManager::getInstance().renderShadows(view, projection, shadowMatrix);
+    glDepthMask(GL_TRUE);
+    glDisable(GL_BLEND);
+    if (wasCull) glEnable(GL_CULL_FACE);
+
     // 消费UDP数据更新
     UDPDataManager::getInstance().consumeUpdates(*this);
 
     // 更新并渲染模型
     if (model_controller_) {
-        model_controller_->update(1.0f/15.0f); // 调整为15FPS
+        model_controller_->update(static_cast<float>(deltaTime));
     }
 
     // 渲染ModelManager管理的模型
@@ -385,15 +407,14 @@ void Scene::render() {
     // 车号显示在屏幕中央上方
     float centerX = screenWidth_ / 2.0f;
     float topY = 15.0f;  // 距顶部15像素
-    textRenderer_.renderText(vehicleId_, centerX, topY, 1.4f, 1.0f, 1.0f, 1.0f, true);
+    textRenderer_.renderText(vehicleId_, centerX, topY, 1.75f, 0.35f, 0.55f, 1.0f, true, false, true);
 
-    // 警告信息显示在车号下方
+    // 警告信息显示在车号下方（与车号纵向间距加大）
     auto warnings = UDPDataManager::getInstance().getWarnings();
-    float warningY = topY + 55.0f;  // 车号下方55像素开始（适应更大的车号字体）
+    float warningY = topY + 78.0f;
     for (size_t i = 0; i < warnings.size() && i < 3; ++i) {
-        // 警告用红色显示
-        textRenderer_.renderText(warnings[i], centerX, warningY, 0.8f, 1.0f, 0.3f, 0.3f, true);
-        warningY += 35.0f;  // 每行间隔35像素
+        textRenderer_.renderText(warnings[i], centerX, warningY, 1.0f, 1.0f, 0.95f, 0.25f, true, false, true, true);
+        warningY += 42.0f;
     }
 
     // 控制音频播放
@@ -729,20 +750,18 @@ void Scene::updateFromUdpData(const std::vector<ProcessedUdpObstacle>& obstacles
     processedInstanceIds.insert(instanceId);
 
     // 检查实例是否已存在
+    bool isNewInstance = false;
     auto instance = modelManager.getModel(instanceId);
     if (!instance) {
-      // 创建新实例
-      // std::cout << "[UDP] Creating instance: " << instanceId << " for model: " << modelId << std::endl;
       instance = modelManager.createInstance(instanceId, modelId);
       if (!instance) {
         std::cerr << "[UDP] Failed to create instance: " << instanceId << " for model: " << modelId << std::endl;
         continue;
       }
-    } else {
-      //std::cout << "[UDP] Updating existing instance: " << instanceId << std::endl;
+      isNewInstance = true;
     }
 
-    // 设置实例状态
+    // 设置目标状态
     ObjectState state;
     state.scale = glm::vec3(1.0f, 1.0f, 1.0f);
     state.visible = true;
@@ -750,28 +769,38 @@ void Scene::updateFromUdpData(const std::vector<ProcessedUdpObstacle>& obstacles
 
     if (obs.type == "truck") {
       state.position = glm::vec3(-obs.position.x + 8.0f, 0.0f, obs.position.y);
-      float target_yaw = obs.rotationY;            // 希望的朝向（绕Y轴，+X=0°）
-      float model_offset = 180.0f;                 // 模型自身朝向偏差
-      float final_yaw = target_yaw - model_offset; // 补偿后应设置的旋转
-      state.rotation = glm::vec3(0.0f, final_yaw, 0.0f);
-    } else if(obs.type == "pedestrian"){ // pedestrian
+      float target_yaw = obs.rotationY;
+      float model_offset = 180.0f;
+      state.rotation = glm::vec3(0.0f, target_yaw - model_offset, 0.0f);
+    } else if (obs.type == "pedestrian") {
       state.position = glm::vec3(-obs.position.x + 8.0f, 0.0f, obs.position.y);
       state.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-    } else if(obs.type == "other") {
+    } else if (obs.type == "other") {
       state.position = glm::vec3(-obs.position.x + 8.0f, 0.0f, obs.position.y);
-      state.scale = glm::vec3(obs.size.x, 2.0f, obs.size.y); // 注意尺寸映射
+      state.scale = glm::vec3(obs.size.x, 2.0f, obs.size.y);
       state.rotation = glm::vec3(0.0f, -90.0f, 0.0f);
     }
 
-    // 更新实例属性
-    instance->setPosition(state.position);
-    instance->setRotation(state.rotation);
-    instance->setScale(state.scale);
-    instance->setVisible(state.visible);
-    instance->setOpacity(state.opacity);
-
-    // 通知ModelController
-    setModelTransform(instanceId, state);
+    if (isNewInstance) {
+      // 新实例：直接设置到位
+      instance->setPosition(state.position);
+      instance->setRotation(state.rotation);
+      instance->setScale(state.scale);
+      instance->setVisible(state.visible);
+      instance->setOpacity(state.opacity);
+      setModelTransform(instanceId, state);
+    } else {
+      // 已有实例：用插值动画过渡，移动更流畅
+      const float kAnimDuration = 0.12f;
+      if (model_controller_) {
+        model_controller_->animateTo(instanceId, state, kAnimDuration);
+      } else {
+        instance->setPosition(state.position);
+        instance->setRotation(state.rotation);
+        instance->setScale(state.scale);
+        setModelTransform(instanceId, state);
+      }
+    }
   }
 
   // 清理不再存在的实例

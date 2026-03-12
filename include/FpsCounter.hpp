@@ -14,6 +14,7 @@ public:
 
     double fps() const { return fps_; }
     double frameTime() const { return frameTime_; }
+    double getDeltaTime() const { return deltaTime_; }
 
     void setTargetFps(double target);
     double targetFps() const { return targetFps_; }
@@ -27,13 +28,16 @@ private:
 
     double fps_ = 0.0;
     double frameTime_ = 0.0;
+    double deltaTime_ = 0.0;
 
     // For FPS calculation (averaged over interval)
     int frameCount_ = 0;
     TimePoint intervalStart_;
 
-    // For frame limiting
+    // For frame limiting and delta
     TimePoint frameStart_;
+    TimePoint lastFrameTime_;
+    bool firstFrame_ = true;
 
     static constexpr double kUpdateInterval = 0.5; // update FPS display every 0.5s
 };

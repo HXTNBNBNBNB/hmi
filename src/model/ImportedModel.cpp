@@ -1,8 +1,30 @@
 #include "../../include/model/ImportedModel.hpp"
+#include <algorithm>
 #include <iostream>
+
+// 阴影着色器（精准投影）
+static const char* shadow_vert_shader = R"(
+attribute vec3 aPosition;
+uniform mat4 uShadowMVP;
+void main() {
+    gl_Position = uShadowMVP * vec4(aPosition, 1.0);
+}
+)";
+
+static const char* shadow_frag_shader = R"(
+precision mediump float;
+uniform float uShadowAlpha;
+void main() {
+    gl_FragColor = vec4(0.38, 0.38, 0.42, uShadowAlpha);
+}
+)";
 
 // 静态成员初始化
 GLuint ImportedModel::shader_program_ = 0;
+GLuint ImportedModel::shadow_program_ = 0;
+GLint ImportedModel::shadow_mvp_loc_ = -1;
+GLint ImportedModel::shadow_alpha_loc_ = -1;
+bool ImportedModel::shadow_shader_initialized_ = false;
 GLint ImportedModel::model_loc_ = -1;
 GLint ImportedModel::view_loc_ = -1;
 GLint ImportedModel::projection_loc_ = -1;
@@ -65,15 +87,13 @@ void main() {
     vec3 N = normalize(vNormal);
     vec3 L = normalize(uLightDir);
 
-    // 简单漫反射光照 (Lambert)
+    // 简单漫反射光照 (Lambert)，仅保留主光源（已屏蔽 Z 轴方向第二光源）
     float NdotL = max(dot(N, L), 0.0);
-
-    // 增加第二个光源从另一侧
+#if 0
     vec3 L2 = normalize(vec3(-0.5, 0.8, -0.3));
     float NdotL2 = max(dot(N, L2), 0.0);
-
-    // 合并光照
-    float diffuse = NdotL * 0.6 + NdotL2 * 0.4;
+#endif
+    float diffuse = NdotL;  // 原: NdotL * 0.6 + NdotL2 * 0.4
 
     // 环境光 + 漫反射
     vec3 ambient = vec3(0.35) * albedo;
@@ -146,6 +166,56 @@ void ImportedModel::initShader() {
 
     shader_initialized_ = true;
     std::cout << "PBR shader initialized successfully" << std::endl;
+}
+
+void ImportedModel::initShadowShader() {
+    if (shadow_shader_initialized_) return;
+
+    GLuint vert = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vert, 1, &shadow_vert_shader, nullptr);
+    glCompileShader(vert);
+
+    GLint success;
+    glGetShaderiv(vert, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        char log[512];
+        glGetShaderInfoLog(vert, 512, nullptr, log);
+        std::cerr << "Shadow vertex shader error: " << log << std::endl;
+        glDeleteShader(vert);
+        return;
+    }
+
+    GLuint frag = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(frag, 1, &shadow_frag_shader, nullptr);
+    glCompileShader(frag);
+    glGetShaderiv(frag, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        char log[512];
+        glGetShaderInfoLog(frag, 512, nullptr, log);
+        std::cerr << "Shadow fragment shader error: " << log << std::endl;
+        glDeleteShader(vert);
+        glDeleteShader(frag);
+        return;
+    }
+
+    shadow_program_ = glCreateProgram();
+    glAttachShader(shadow_program_, vert);
+    glAttachShader(shadow_program_, frag);
+    glLinkProgram(shadow_program_);
+    glGetProgramiv(shadow_program_, GL_LINK_STATUS, &success);
+    glDeleteShader(vert);
+    glDeleteShader(frag);
+
+    if (!success) {
+        char log[512];
+        glGetProgramInfoLog(shadow_program_, 512, nullptr, log);
+        std::cerr << "Shadow shader link error: " << log << std::endl;
+        return;
+    }
+
+    shadow_mvp_loc_ = glGetUniformLocation(shadow_program_, "uShadowMVP");
+    shadow_alpha_loc_ = glGetUniformLocation(shadow_program_, "uShadowAlpha");
+    shadow_shader_initialized_ = true;
 }
 
 ImportedModel::ImportedModel()
@@ -311,6 +381,54 @@ void ImportedModel::render(const glm::mat4& view, const glm::mat4& projection) {
     glUseProgram(0);
 }
 
+void ImportedModel::renderShadow(const glm::mat4& view, const glm::mat4& projection,
+                                const glm::mat4& shadowMatrix) {
+    if (!visible_) return;
+
+    initShadowShader();
+    if (!shadow_program_ || shadow_mvp_loc_ < 0) return;
+
+    glm::mat4 model = getModelMatrix();
+    glm::mat4 shadowMVP = projection * view * shadowMatrix * model;
+
+    glUseProgram(shadow_program_);
+    if (shadow_alpha_loc_ >= 0)
+        glUniform1f(shadow_alpha_loc_, 0.15f);
+    glUniformMatrix4fv(shadow_mvp_loc_, 1, GL_FALSE, glm::value_ptr(shadowMVP));
+
+    GLint pos_attrib = glGetAttribLocation(shadow_program_, "aPosition");
+
+    if (!submeshes_.empty()) {
+        for (const auto& sm : submeshes_) {
+            glBindBuffer(GL_ARRAY_BUFFER, sm.vbo);
+            glEnableVertexAttribArray(pos_attrib);
+            glVertexAttribPointer(pos_attrib, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+            if (sm.indexCount > 0) {
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, sm.ebo);
+                glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(sm.indexCount), GL_UNSIGNED_INT, 0);
+            } else {
+                glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(sm.vertexCount));
+            }
+            glDisableVertexAttribArray(pos_attrib);
+        }
+    } else if (!vertices_.empty()) {
+        glBindBuffer(GL_ARRAY_BUFFER, vbo_);
+        glEnableVertexAttribArray(pos_attrib);
+        glVertexAttribPointer(pos_attrib, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+        if (!indices_.empty()) {
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_);
+            glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices_.size()), GL_UNSIGNED_INT, 0);
+        } else {
+            glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(vertices_.size()));
+        }
+        glDisableVertexAttribArray(pos_attrib);
+    }
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    glUseProgram(0);
+}
+
 void ImportedModel::update(float deltaTime) {
 }
 
@@ -376,6 +494,18 @@ void ImportedModel::setSubMeshes(const std::vector<SubMesh>& submeshes, const st
         submeshes_.push_back(gpu_sm);
     }
 
+    glm::vec3 minB(1e30f), maxB(-1e30f);
+    for (const auto& sm : submeshes) {
+        for (const auto& v : sm.vertices) {
+            minB = glm::min(minB, v.position);
+            maxB = glm::max(maxB, v.position);
+        }
+    }
+    if (minB.x <= maxB.x) {
+        min_bound_ = minB;
+        max_bound_ = maxB;
+    }
+
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
@@ -417,7 +547,10 @@ std::shared_ptr<BaseModel> ImportedModel::clone() const {
     cloned->source_file_ = source_file_;
     cloned->model_format_ = model_format_;
     cloned->textures_.clear();
-    cloned->calculateBounds();
+    cloned->min_bound_ = min_bound_;
+    cloned->max_bound_ = max_bound_;
+    if (vertices_.empty() && submeshes_.empty())
+        cloned->calculateBounds();
 
     return cloned;
 }

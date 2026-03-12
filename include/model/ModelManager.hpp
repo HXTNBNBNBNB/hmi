@@ -74,6 +74,8 @@ public:
 
     // 渲染接口
     void renderAll(const glm::mat4& view, const glm::mat4& projection);
+    void renderShadows(const glm::mat4& view, const glm::mat4& projection,
+                      const glm::mat4& shadowMatrix);
     void renderModel(const std::string& id, const glm::mat4& view, const glm::mat4& projection);
 
     // 更新接口

@@ -21,7 +21,7 @@ public:
 
     bool init();
     void resize(int width, int height);
-    void render();
+    void render(double deltaTime = 1.0/60.0);
 
     // 模型控制接口(使用ModelController)
     void setModelTransform(const std::string& objectId, const ObjectState& state);
