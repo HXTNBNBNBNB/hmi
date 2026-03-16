@@ -6,9 +6,9 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# 编译选项优化
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
+# 编译选项优化（为 perf 火焰图保留栈帧）
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -g -DNDEBUG -fno-omit-frame-pointer")
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -fno-omit-frame-pointer")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -22,23 +22,47 @@ find_package(Threads REQUIRED)
 
 add_executable(hmi_scene
     main.cpp
-    src/Scene.cpp
-    src/FpsCounter.cpp
-    src/model/BaseModel.cpp
-    src/model/ImportedModel.cpp
-    src/model/ModelManager.cpp
-    src/loader/GLTFLoader.cpp
-    src/importer/ModelImporter.cpp
-    src/controller/ModelController.cpp
-    src/controller/UDPDataManager.cpp
-    src/ui/TextRenderer.cpp
-    src/audioplayder/AudioPlayer.cpp
+    src/Application.cpp
+    src/scene/gui/ImGuiLayer.cpp
+    src/scene/Scene.cpp
+    src/scene/fps/FpsCounter.cpp
+    src/model/base/BaseModel.cpp
+    src/model/instances/ImportedModel.cpp
+    src/model/manager/ModelManager.cpp
+    src/model/loader/GLTFLoader.cpp
+    src/model/importer/ModelImporter.cpp
+    src/model/controller/ModelController.cpp
+    src/data/UDPDataManager.cpp
+    src/scene/text/TextRenderer.cpp
+    src/scene/audio/AudioPlayer.cpp
+
+    # Dear ImGui core sources
+    include/third_party/imgui/imgui.cpp
+    include/third_party/imgui/imgui_draw.cpp
+    include/third_party/imgui/imgui_tables.cpp
+    include/third_party/imgui/imgui_widgets.cpp
+    # include/third_party/imgui/imgui_demo.cpp  # 可选：示例窗口
+
+    # Dear ImGui backends
+    include/third_party/imgui/backends/imgui_impl_glfw.cpp
+    include/third_party/imgui/backends/imgui_impl_opengl3.cpp
 )
 
 target_include_directories(hmi_scene PRIVATE
     include
-    include/loader
-    include/importer
+    include/scene
+    include/scene/gui
+    include/scene/text
+    include/scene/fps
+    include/scene/audio
+    include/model
+    include/model/loader
+    include/model/importer
+    include/model/controller
+    include/data
+    include/third_party
+    include/third_party/imgui
+    include/third_party/imgui/backends
     ${GLFW3_INCLUDE_DIRS}
     ${EGL_INCLUDE_DIRS}
     ${GLESV2_INCLUDE_DIRS}
@@ -54,6 +78,11 @@ target_compile_options(hmi_scene PRIVATE
     ${GLFW3_CFLAGS_OTHER}
     ${EGL_CFLAGS_OTHER}
     ${GLESV2_CFLAGS_OTHER}
+)
+
+# Dear ImGui: 为 OpenGL ES 2 打开对应后端宏
+target_compile_definitions(hmi_scene PRIVATE
+    IMGUI_IMPL_OPENGL_ES2
 )
 
 # 添加jsoncpp依赖
@@ -74,6 +103,7 @@ target_link_libraries(hmi_scene PRIVATE
     ${EGL_LIBRARIES}
     ${GLESV2_LIBRARIES}
     ${ALSA_LIBRARIES}
+    dl
     Threads::Threads
 )
 
@@ -82,10 +112,19 @@ target_include_directories(hmi_scene PRIVATE
     ${DRACO_INCLUDE_DIR}
     ${ALSA_INCLUDE_DIRS}
     include
-    include/audioplayder
-    include/loader
-    include/importer
+    include/scene
+    include/scene/gui
+    include/scene/text
+    include/scene/fps
+    include/scene/audio
+    include/model
+    include/model/loader
+    include/model/importer
+    include/model/controller
+    include/data
     include/third_party
+    include/third_party/imgui
+    include/third_party/imgui/backends
     ${GLFW3_INCLUDE_DIRS}
     ${EGL_INCLUDE_DIRS}
     ${GLESV2_INCLUDE_DIRS}

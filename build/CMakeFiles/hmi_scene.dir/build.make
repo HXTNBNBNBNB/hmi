@@ -70,184 +70,304 @@ CMakeFiles/hmi_scene.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/main.cpp -o CMakeFiles/hmi_scene.dir/main.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/Scene.cpp.o: ../src/Scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hmi_scene.dir/src/Scene.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/Scene.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/Scene.cpp
+CMakeFiles/hmi_scene.dir/src/Application.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/Application.cpp.o: ../src/Application.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hmi_scene.dir/src/Application.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/Application.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/Application.cpp
 
-CMakeFiles/hmi_scene.dir/src/Scene.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/Scene.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/Scene.cpp > CMakeFiles/hmi_scene.dir/src/Scene.cpp.i
+CMakeFiles/hmi_scene.dir/src/Application.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/Application.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/Application.cpp > CMakeFiles/hmi_scene.dir/src/Application.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/Scene.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/Scene.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/Scene.cpp -o CMakeFiles/hmi_scene.dir/src/Scene.cpp.s
+CMakeFiles/hmi_scene.dir/src/Application.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/Application.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/Application.cpp -o CMakeFiles/hmi_scene.dir/src/Application.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o: ../src/FpsCounter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/FpsCounter.cpp
+CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.o: ../src/scene/gui/ImGuiLayer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/scene/gui/ImGuiLayer.cpp
 
-CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/FpsCounter.cpp > CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.i
+CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/scene/gui/ImGuiLayer.cpp > CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/FpsCounter.cpp -o CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.s
+CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/scene/gui/ImGuiLayer.cpp -o CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o: ../src/model/BaseModel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/BaseModel.cpp
+CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.o: ../src/scene/Scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/scene/Scene.cpp
 
-CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/BaseModel.cpp > CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.i
+CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/scene/Scene.cpp > CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/BaseModel.cpp -o CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.s
+CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/scene/Scene.cpp -o CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o: ../src/model/ImportedModel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/ImportedModel.cpp
+CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.o: ../src/scene/fps/FpsCounter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/scene/fps/FpsCounter.cpp
 
-CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/ImportedModel.cpp > CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.i
+CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/scene/fps/FpsCounter.cpp > CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/ImportedModel.cpp -o CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.s
+CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/scene/fps/FpsCounter.cpp -o CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o: ../src/model/ModelManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/ModelManager.cpp
+CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.o: ../src/model/base/BaseModel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/base/BaseModel.cpp
 
-CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/ModelManager.cpp > CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.i
+CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/base/BaseModel.cpp > CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/ModelManager.cpp -o CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.s
+CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/base/BaseModel.cpp -o CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o: ../src/loader/GLTFLoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/loader/GLTFLoader.cpp
+CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.o: ../src/model/instances/ImportedModel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/instances/ImportedModel.cpp
 
-CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/loader/GLTFLoader.cpp > CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.i
+CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/instances/ImportedModel.cpp > CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/loader/GLTFLoader.cpp -o CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.s
+CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/instances/ImportedModel.cpp -o CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o: ../src/importer/ModelImporter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/importer/ModelImporter.cpp
+CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.o: ../src/model/manager/ModelManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/manager/ModelManager.cpp
 
-CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/importer/ModelImporter.cpp > CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.i
+CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/manager/ModelManager.cpp > CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/importer/ModelImporter.cpp -o CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.s
+CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/manager/ModelManager.cpp -o CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o: ../src/controller/ModelController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/controller/ModelController.cpp
+CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.o: ../src/model/loader/GLTFLoader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/loader/GLTFLoader.cpp
 
-CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/controller/ModelController.cpp > CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.i
+CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/loader/GLTFLoader.cpp > CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/controller/ModelController.cpp -o CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.s
+CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/loader/GLTFLoader.cpp -o CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o: ../src/controller/UDPDataManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/controller/UDPDataManager.cpp
+CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.o: ../src/model/importer/ModelImporter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/importer/ModelImporter.cpp
 
-CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/controller/UDPDataManager.cpp > CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.i
+CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/importer/ModelImporter.cpp > CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/controller/UDPDataManager.cpp -o CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.s
+CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/importer/ModelImporter.cpp -o CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o: ../src/ui/TextRenderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/ui/TextRenderer.cpp
+CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.o: ../src/model/controller/ModelController.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/model/controller/ModelController.cpp
 
-CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/ui/TextRenderer.cpp > CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.i
+CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/model/controller/ModelController.cpp > CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/ui/TextRenderer.cpp -o CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.s
+CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/model/controller/ModelController.cpp -o CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.s
 
-CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
-CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o: ../src/audioplayder/AudioPlayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/audioplayder/AudioPlayer.cpp
+CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.o: ../src/data/UDPDataManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/data/UDPDataManager.cpp
 
-CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/audioplayder/AudioPlayer.cpp > CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.i
+CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/data/UDPDataManager.cpp > CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.i
 
-CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/audioplayder/AudioPlayer.cpp -o CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.s
+CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/data/UDPDataManager.cpp -o CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.s
+
+CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.o: ../src/scene/text/TextRenderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/scene/text/TextRenderer.cpp
+
+CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/scene/text/TextRenderer.cpp > CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.i
+
+CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/scene/text/TextRenderer.cpp -o CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.s
+
+CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.o: ../src/scene/audio/AudioPlayer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.o -c /home/good/workspace/jili_hmi/hmi/src/scene/audio/AudioPlayer.cpp
+
+CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/src/scene/audio/AudioPlayer.cpp > CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.i
+
+CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/src/scene/audio/AudioPlayer.cpp -o CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.s
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.o: ../include/third_party/imgui/imgui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.o -c /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui.cpp
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui.cpp > CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.i
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui.cpp -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.s
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.o: ../include/third_party/imgui/imgui_draw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.o -c /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_draw.cpp
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_draw.cpp > CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.i
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_draw.cpp -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.s
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.o: ../include/third_party/imgui/imgui_tables.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.o -c /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_tables.cpp
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_tables.cpp > CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.i
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_tables.cpp -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.s
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.o: ../include/third_party/imgui/imgui_widgets.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.o -c /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_widgets.cpp
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_widgets.cpp > CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.i
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/imgui_widgets.cpp -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.s
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.o: ../include/third_party/imgui/backends/imgui_impl_glfw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.o -c /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/backends/imgui_impl_glfw.cpp
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/backends/imgui_impl_glfw.cpp > CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.i
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/backends/imgui_impl_glfw.cpp -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.s
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o: CMakeFiles/hmi_scene.dir/flags.make
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o: ../include/third_party/imgui/backends/imgui_impl_opengl3.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o -c /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/backends/imgui_impl_opengl3.cpp
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/backends/imgui_impl_opengl3.cpp > CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.i
+
+CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/good/workspace/jili_hmi/hmi/include/third_party/imgui/backends/imgui_impl_opengl3.cpp -o CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.s
 
 # Object files for target hmi_scene
 hmi_scene_OBJECTS = \
 "CMakeFiles/hmi_scene.dir/main.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/Scene.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o" \
-"CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o"
+"CMakeFiles/hmi_scene.dir/src/Application.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.o" \
+"CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.o" \
+"CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.o" \
+"CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.o" \
+"CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.o" \
+"CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.o" \
+"CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.o" \
+"CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o"
 
 # External object files for target hmi_scene
 hmi_scene_EXTERNAL_OBJECTS =
 
 hmi_scene: CMakeFiles/hmi_scene.dir/main.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/Scene.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o
-hmi_scene: CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/Application.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.o
+hmi_scene: CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o
 hmi_scene: CMakeFiles/hmi_scene.dir/build.make
 hmi_scene: /usr/local/lib/libdraco.a
 hmi_scene: /usr/local/lib/libdraco.a
 hmi_scene: CMakeFiles/hmi_scene.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable hmi_scene"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/good/workspace/jili_hmi/hmi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable hmi_scene"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hmi_scene.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

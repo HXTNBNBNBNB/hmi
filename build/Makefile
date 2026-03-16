@@ -123,6 +123,168 @@ hmi_scene/fast:
 	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/build
 .PHONY : hmi_scene/fast
 
+include/third_party/imgui/backends/imgui_impl_glfw.o: include/third_party/imgui/backends/imgui_impl_glfw.cpp.o
+
+.PHONY : include/third_party/imgui/backends/imgui_impl_glfw.o
+
+# target to build an object file
+include/third_party/imgui/backends/imgui_impl_glfw.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : include/third_party/imgui/backends/imgui_impl_glfw.cpp.o
+
+include/third_party/imgui/backends/imgui_impl_glfw.i: include/third_party/imgui/backends/imgui_impl_glfw.cpp.i
+
+.PHONY : include/third_party/imgui/backends/imgui_impl_glfw.i
+
+# target to preprocess a source file
+include/third_party/imgui/backends/imgui_impl_glfw.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : include/third_party/imgui/backends/imgui_impl_glfw.cpp.i
+
+include/third_party/imgui/backends/imgui_impl_glfw.s: include/third_party/imgui/backends/imgui_impl_glfw.cpp.s
+
+.PHONY : include/third_party/imgui/backends/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+include/third_party/imgui/backends/imgui_impl_glfw.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : include/third_party/imgui/backends/imgui_impl_glfw.cpp.s
+
+include/third_party/imgui/backends/imgui_impl_opengl3.o: include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o
+
+.PHONY : include/third_party/imgui/backends/imgui_impl_opengl3.o
+
+# target to build an object file
+include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o
+.PHONY : include/third_party/imgui/backends/imgui_impl_opengl3.cpp.o
+
+include/third_party/imgui/backends/imgui_impl_opengl3.i: include/third_party/imgui/backends/imgui_impl_opengl3.cpp.i
+
+.PHONY : include/third_party/imgui/backends/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+include/third_party/imgui/backends/imgui_impl_opengl3.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : include/third_party/imgui/backends/imgui_impl_opengl3.cpp.i
+
+include/third_party/imgui/backends/imgui_impl_opengl3.s: include/third_party/imgui/backends/imgui_impl_opengl3.cpp.s
+
+.PHONY : include/third_party/imgui/backends/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+include/third_party/imgui/backends/imgui_impl_opengl3.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : include/third_party/imgui/backends/imgui_impl_opengl3.cpp.s
+
+include/third_party/imgui/imgui.o: include/third_party/imgui/imgui.cpp.o
+
+.PHONY : include/third_party/imgui/imgui.o
+
+# target to build an object file
+include/third_party/imgui/imgui.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.o
+.PHONY : include/third_party/imgui/imgui.cpp.o
+
+include/third_party/imgui/imgui.i: include/third_party/imgui/imgui.cpp.i
+
+.PHONY : include/third_party/imgui/imgui.i
+
+# target to preprocess a source file
+include/third_party/imgui/imgui.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.i
+.PHONY : include/third_party/imgui/imgui.cpp.i
+
+include/third_party/imgui/imgui.s: include/third_party/imgui/imgui.cpp.s
+
+.PHONY : include/third_party/imgui/imgui.s
+
+# target to generate assembly for a file
+include/third_party/imgui/imgui.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui.cpp.s
+.PHONY : include/third_party/imgui/imgui.cpp.s
+
+include/third_party/imgui/imgui_draw.o: include/third_party/imgui/imgui_draw.cpp.o
+
+.PHONY : include/third_party/imgui/imgui_draw.o
+
+# target to build an object file
+include/third_party/imgui/imgui_draw.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.o
+.PHONY : include/third_party/imgui/imgui_draw.cpp.o
+
+include/third_party/imgui/imgui_draw.i: include/third_party/imgui/imgui_draw.cpp.i
+
+.PHONY : include/third_party/imgui/imgui_draw.i
+
+# target to preprocess a source file
+include/third_party/imgui/imgui_draw.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.i
+.PHONY : include/third_party/imgui/imgui_draw.cpp.i
+
+include/third_party/imgui/imgui_draw.s: include/third_party/imgui/imgui_draw.cpp.s
+
+.PHONY : include/third_party/imgui/imgui_draw.s
+
+# target to generate assembly for a file
+include/third_party/imgui/imgui_draw.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_draw.cpp.s
+.PHONY : include/third_party/imgui/imgui_draw.cpp.s
+
+include/third_party/imgui/imgui_tables.o: include/third_party/imgui/imgui_tables.cpp.o
+
+.PHONY : include/third_party/imgui/imgui_tables.o
+
+# target to build an object file
+include/third_party/imgui/imgui_tables.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.o
+.PHONY : include/third_party/imgui/imgui_tables.cpp.o
+
+include/third_party/imgui/imgui_tables.i: include/third_party/imgui/imgui_tables.cpp.i
+
+.PHONY : include/third_party/imgui/imgui_tables.i
+
+# target to preprocess a source file
+include/third_party/imgui/imgui_tables.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.i
+.PHONY : include/third_party/imgui/imgui_tables.cpp.i
+
+include/third_party/imgui/imgui_tables.s: include/third_party/imgui/imgui_tables.cpp.s
+
+.PHONY : include/third_party/imgui/imgui_tables.s
+
+# target to generate assembly for a file
+include/third_party/imgui/imgui_tables.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_tables.cpp.s
+.PHONY : include/third_party/imgui/imgui_tables.cpp.s
+
+include/third_party/imgui/imgui_widgets.o: include/third_party/imgui/imgui_widgets.cpp.o
+
+.PHONY : include/third_party/imgui/imgui_widgets.o
+
+# target to build an object file
+include/third_party/imgui/imgui_widgets.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.o
+.PHONY : include/third_party/imgui/imgui_widgets.cpp.o
+
+include/third_party/imgui/imgui_widgets.i: include/third_party/imgui/imgui_widgets.cpp.i
+
+.PHONY : include/third_party/imgui/imgui_widgets.i
+
+# target to preprocess a source file
+include/third_party/imgui/imgui_widgets.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.i
+.PHONY : include/third_party/imgui/imgui_widgets.cpp.i
+
+include/third_party/imgui/imgui_widgets.s: include/third_party/imgui/imgui_widgets.cpp.s
+
+.PHONY : include/third_party/imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+include/third_party/imgui/imgui_widgets.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/include/third_party/imgui/imgui_widgets.cpp.s
+.PHONY : include/third_party/imgui/imgui_widgets.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -150,302 +312,356 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/FpsCounter.o: src/FpsCounter.cpp.o
+src/Application.o: src/Application.cpp.o
 
-.PHONY : src/FpsCounter.o
-
-# target to build an object file
-src/FpsCounter.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.o
-.PHONY : src/FpsCounter.cpp.o
-
-src/FpsCounter.i: src/FpsCounter.cpp.i
-
-.PHONY : src/FpsCounter.i
-
-# target to preprocess a source file
-src/FpsCounter.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.i
-.PHONY : src/FpsCounter.cpp.i
-
-src/FpsCounter.s: src/FpsCounter.cpp.s
-
-.PHONY : src/FpsCounter.s
-
-# target to generate assembly for a file
-src/FpsCounter.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/FpsCounter.cpp.s
-.PHONY : src/FpsCounter.cpp.s
-
-src/Scene.o: src/Scene.cpp.o
-
-.PHONY : src/Scene.o
+.PHONY : src/Application.o
 
 # target to build an object file
-src/Scene.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/Scene.cpp.o
-.PHONY : src/Scene.cpp.o
+src/Application.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/Application.cpp.o
+.PHONY : src/Application.cpp.o
 
-src/Scene.i: src/Scene.cpp.i
+src/Application.i: src/Application.cpp.i
 
-.PHONY : src/Scene.i
+.PHONY : src/Application.i
 
 # target to preprocess a source file
-src/Scene.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/Scene.cpp.i
-.PHONY : src/Scene.cpp.i
+src/Application.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/Application.cpp.i
+.PHONY : src/Application.cpp.i
 
-src/Scene.s: src/Scene.cpp.s
+src/Application.s: src/Application.cpp.s
 
-.PHONY : src/Scene.s
+.PHONY : src/Application.s
 
 # target to generate assembly for a file
-src/Scene.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/Scene.cpp.s
-.PHONY : src/Scene.cpp.s
+src/Application.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/Application.cpp.s
+.PHONY : src/Application.cpp.s
 
-src/audioplayder/AudioPlayer.o: src/audioplayder/AudioPlayer.cpp.o
+src/data/UDPDataManager.o: src/data/UDPDataManager.cpp.o
 
-.PHONY : src/audioplayder/AudioPlayer.o
+.PHONY : src/data/UDPDataManager.o
 
 # target to build an object file
-src/audioplayder/AudioPlayer.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.o
-.PHONY : src/audioplayder/AudioPlayer.cpp.o
+src/data/UDPDataManager.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.o
+.PHONY : src/data/UDPDataManager.cpp.o
 
-src/audioplayder/AudioPlayer.i: src/audioplayder/AudioPlayer.cpp.i
+src/data/UDPDataManager.i: src/data/UDPDataManager.cpp.i
 
-.PHONY : src/audioplayder/AudioPlayer.i
+.PHONY : src/data/UDPDataManager.i
 
 # target to preprocess a source file
-src/audioplayder/AudioPlayer.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.i
-.PHONY : src/audioplayder/AudioPlayer.cpp.i
+src/data/UDPDataManager.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.i
+.PHONY : src/data/UDPDataManager.cpp.i
 
-src/audioplayder/AudioPlayer.s: src/audioplayder/AudioPlayer.cpp.s
+src/data/UDPDataManager.s: src/data/UDPDataManager.cpp.s
 
-.PHONY : src/audioplayder/AudioPlayer.s
+.PHONY : src/data/UDPDataManager.s
 
 # target to generate assembly for a file
-src/audioplayder/AudioPlayer.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/audioplayder/AudioPlayer.cpp.s
-.PHONY : src/audioplayder/AudioPlayer.cpp.s
+src/data/UDPDataManager.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/data/UDPDataManager.cpp.s
+.PHONY : src/data/UDPDataManager.cpp.s
 
-src/controller/ModelController.o: src/controller/ModelController.cpp.o
+src/model/base/BaseModel.o: src/model/base/BaseModel.cpp.o
 
-.PHONY : src/controller/ModelController.o
+.PHONY : src/model/base/BaseModel.o
 
 # target to build an object file
-src/controller/ModelController.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.o
-.PHONY : src/controller/ModelController.cpp.o
+src/model/base/BaseModel.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.o
+.PHONY : src/model/base/BaseModel.cpp.o
 
-src/controller/ModelController.i: src/controller/ModelController.cpp.i
+src/model/base/BaseModel.i: src/model/base/BaseModel.cpp.i
 
-.PHONY : src/controller/ModelController.i
+.PHONY : src/model/base/BaseModel.i
 
 # target to preprocess a source file
-src/controller/ModelController.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.i
-.PHONY : src/controller/ModelController.cpp.i
+src/model/base/BaseModel.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.i
+.PHONY : src/model/base/BaseModel.cpp.i
 
-src/controller/ModelController.s: src/controller/ModelController.cpp.s
+src/model/base/BaseModel.s: src/model/base/BaseModel.cpp.s
 
-.PHONY : src/controller/ModelController.s
+.PHONY : src/model/base/BaseModel.s
 
 # target to generate assembly for a file
-src/controller/ModelController.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/controller/ModelController.cpp.s
-.PHONY : src/controller/ModelController.cpp.s
+src/model/base/BaseModel.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/base/BaseModel.cpp.s
+.PHONY : src/model/base/BaseModel.cpp.s
 
-src/controller/UDPDataManager.o: src/controller/UDPDataManager.cpp.o
+src/model/controller/ModelController.o: src/model/controller/ModelController.cpp.o
 
-.PHONY : src/controller/UDPDataManager.o
+.PHONY : src/model/controller/ModelController.o
 
 # target to build an object file
-src/controller/UDPDataManager.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.o
-.PHONY : src/controller/UDPDataManager.cpp.o
+src/model/controller/ModelController.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.o
+.PHONY : src/model/controller/ModelController.cpp.o
 
-src/controller/UDPDataManager.i: src/controller/UDPDataManager.cpp.i
+src/model/controller/ModelController.i: src/model/controller/ModelController.cpp.i
 
-.PHONY : src/controller/UDPDataManager.i
+.PHONY : src/model/controller/ModelController.i
 
 # target to preprocess a source file
-src/controller/UDPDataManager.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.i
-.PHONY : src/controller/UDPDataManager.cpp.i
+src/model/controller/ModelController.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.i
+.PHONY : src/model/controller/ModelController.cpp.i
 
-src/controller/UDPDataManager.s: src/controller/UDPDataManager.cpp.s
+src/model/controller/ModelController.s: src/model/controller/ModelController.cpp.s
 
-.PHONY : src/controller/UDPDataManager.s
+.PHONY : src/model/controller/ModelController.s
 
 # target to generate assembly for a file
-src/controller/UDPDataManager.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/controller/UDPDataManager.cpp.s
-.PHONY : src/controller/UDPDataManager.cpp.s
+src/model/controller/ModelController.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/controller/ModelController.cpp.s
+.PHONY : src/model/controller/ModelController.cpp.s
 
-src/importer/ModelImporter.o: src/importer/ModelImporter.cpp.o
+src/model/importer/ModelImporter.o: src/model/importer/ModelImporter.cpp.o
 
-.PHONY : src/importer/ModelImporter.o
+.PHONY : src/model/importer/ModelImporter.o
 
 # target to build an object file
-src/importer/ModelImporter.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.o
-.PHONY : src/importer/ModelImporter.cpp.o
+src/model/importer/ModelImporter.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.o
+.PHONY : src/model/importer/ModelImporter.cpp.o
 
-src/importer/ModelImporter.i: src/importer/ModelImporter.cpp.i
+src/model/importer/ModelImporter.i: src/model/importer/ModelImporter.cpp.i
 
-.PHONY : src/importer/ModelImporter.i
+.PHONY : src/model/importer/ModelImporter.i
 
 # target to preprocess a source file
-src/importer/ModelImporter.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.i
-.PHONY : src/importer/ModelImporter.cpp.i
+src/model/importer/ModelImporter.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.i
+.PHONY : src/model/importer/ModelImporter.cpp.i
 
-src/importer/ModelImporter.s: src/importer/ModelImporter.cpp.s
+src/model/importer/ModelImporter.s: src/model/importer/ModelImporter.cpp.s
 
-.PHONY : src/importer/ModelImporter.s
+.PHONY : src/model/importer/ModelImporter.s
 
 # target to generate assembly for a file
-src/importer/ModelImporter.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/importer/ModelImporter.cpp.s
-.PHONY : src/importer/ModelImporter.cpp.s
+src/model/importer/ModelImporter.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/importer/ModelImporter.cpp.s
+.PHONY : src/model/importer/ModelImporter.cpp.s
 
-src/loader/GLTFLoader.o: src/loader/GLTFLoader.cpp.o
+src/model/instances/ImportedModel.o: src/model/instances/ImportedModel.cpp.o
 
-.PHONY : src/loader/GLTFLoader.o
+.PHONY : src/model/instances/ImportedModel.o
 
 # target to build an object file
-src/loader/GLTFLoader.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.o
-.PHONY : src/loader/GLTFLoader.cpp.o
+src/model/instances/ImportedModel.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.o
+.PHONY : src/model/instances/ImportedModel.cpp.o
 
-src/loader/GLTFLoader.i: src/loader/GLTFLoader.cpp.i
+src/model/instances/ImportedModel.i: src/model/instances/ImportedModel.cpp.i
 
-.PHONY : src/loader/GLTFLoader.i
+.PHONY : src/model/instances/ImportedModel.i
 
 # target to preprocess a source file
-src/loader/GLTFLoader.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.i
-.PHONY : src/loader/GLTFLoader.cpp.i
+src/model/instances/ImportedModel.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.i
+.PHONY : src/model/instances/ImportedModel.cpp.i
 
-src/loader/GLTFLoader.s: src/loader/GLTFLoader.cpp.s
+src/model/instances/ImportedModel.s: src/model/instances/ImportedModel.cpp.s
 
-.PHONY : src/loader/GLTFLoader.s
+.PHONY : src/model/instances/ImportedModel.s
 
 # target to generate assembly for a file
-src/loader/GLTFLoader.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/loader/GLTFLoader.cpp.s
-.PHONY : src/loader/GLTFLoader.cpp.s
+src/model/instances/ImportedModel.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/instances/ImportedModel.cpp.s
+.PHONY : src/model/instances/ImportedModel.cpp.s
 
-src/model/BaseModel.o: src/model/BaseModel.cpp.o
+src/model/loader/GLTFLoader.o: src/model/loader/GLTFLoader.cpp.o
 
-.PHONY : src/model/BaseModel.o
+.PHONY : src/model/loader/GLTFLoader.o
 
 # target to build an object file
-src/model/BaseModel.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.o
-.PHONY : src/model/BaseModel.cpp.o
+src/model/loader/GLTFLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.o
+.PHONY : src/model/loader/GLTFLoader.cpp.o
 
-src/model/BaseModel.i: src/model/BaseModel.cpp.i
+src/model/loader/GLTFLoader.i: src/model/loader/GLTFLoader.cpp.i
 
-.PHONY : src/model/BaseModel.i
+.PHONY : src/model/loader/GLTFLoader.i
 
 # target to preprocess a source file
-src/model/BaseModel.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.i
-.PHONY : src/model/BaseModel.cpp.i
+src/model/loader/GLTFLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.i
+.PHONY : src/model/loader/GLTFLoader.cpp.i
 
-src/model/BaseModel.s: src/model/BaseModel.cpp.s
+src/model/loader/GLTFLoader.s: src/model/loader/GLTFLoader.cpp.s
 
-.PHONY : src/model/BaseModel.s
+.PHONY : src/model/loader/GLTFLoader.s
 
 # target to generate assembly for a file
-src/model/BaseModel.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/BaseModel.cpp.s
-.PHONY : src/model/BaseModel.cpp.s
+src/model/loader/GLTFLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/loader/GLTFLoader.cpp.s
+.PHONY : src/model/loader/GLTFLoader.cpp.s
 
-src/model/ImportedModel.o: src/model/ImportedModel.cpp.o
+src/model/manager/ModelManager.o: src/model/manager/ModelManager.cpp.o
 
-.PHONY : src/model/ImportedModel.o
+.PHONY : src/model/manager/ModelManager.o
 
 # target to build an object file
-src/model/ImportedModel.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.o
-.PHONY : src/model/ImportedModel.cpp.o
+src/model/manager/ModelManager.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.o
+.PHONY : src/model/manager/ModelManager.cpp.o
 
-src/model/ImportedModel.i: src/model/ImportedModel.cpp.i
+src/model/manager/ModelManager.i: src/model/manager/ModelManager.cpp.i
 
-.PHONY : src/model/ImportedModel.i
+.PHONY : src/model/manager/ModelManager.i
 
 # target to preprocess a source file
-src/model/ImportedModel.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.i
-.PHONY : src/model/ImportedModel.cpp.i
+src/model/manager/ModelManager.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.i
+.PHONY : src/model/manager/ModelManager.cpp.i
 
-src/model/ImportedModel.s: src/model/ImportedModel.cpp.s
+src/model/manager/ModelManager.s: src/model/manager/ModelManager.cpp.s
 
-.PHONY : src/model/ImportedModel.s
+.PHONY : src/model/manager/ModelManager.s
 
 # target to generate assembly for a file
-src/model/ImportedModel.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/ImportedModel.cpp.s
-.PHONY : src/model/ImportedModel.cpp.s
+src/model/manager/ModelManager.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/manager/ModelManager.cpp.s
+.PHONY : src/model/manager/ModelManager.cpp.s
 
-src/model/ModelManager.o: src/model/ModelManager.cpp.o
+src/scene/Scene.o: src/scene/Scene.cpp.o
 
-.PHONY : src/model/ModelManager.o
+.PHONY : src/scene/Scene.o
 
 # target to build an object file
-src/model/ModelManager.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.o
-.PHONY : src/model/ModelManager.cpp.o
+src/scene/Scene.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.o
+.PHONY : src/scene/Scene.cpp.o
 
-src/model/ModelManager.i: src/model/ModelManager.cpp.i
+src/scene/Scene.i: src/scene/Scene.cpp.i
 
-.PHONY : src/model/ModelManager.i
+.PHONY : src/scene/Scene.i
 
 # target to preprocess a source file
-src/model/ModelManager.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.i
-.PHONY : src/model/ModelManager.cpp.i
+src/scene/Scene.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.i
+.PHONY : src/scene/Scene.cpp.i
 
-src/model/ModelManager.s: src/model/ModelManager.cpp.s
+src/scene/Scene.s: src/scene/Scene.cpp.s
 
-.PHONY : src/model/ModelManager.s
+.PHONY : src/scene/Scene.s
 
 # target to generate assembly for a file
-src/model/ModelManager.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/model/ModelManager.cpp.s
-.PHONY : src/model/ModelManager.cpp.s
+src/scene/Scene.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/Scene.cpp.s
+.PHONY : src/scene/Scene.cpp.s
 
-src/ui/TextRenderer.o: src/ui/TextRenderer.cpp.o
+src/scene/audio/AudioPlayer.o: src/scene/audio/AudioPlayer.cpp.o
 
-.PHONY : src/ui/TextRenderer.o
+.PHONY : src/scene/audio/AudioPlayer.o
 
 # target to build an object file
-src/ui/TextRenderer.cpp.o:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.o
-.PHONY : src/ui/TextRenderer.cpp.o
+src/scene/audio/AudioPlayer.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.o
+.PHONY : src/scene/audio/AudioPlayer.cpp.o
 
-src/ui/TextRenderer.i: src/ui/TextRenderer.cpp.i
+src/scene/audio/AudioPlayer.i: src/scene/audio/AudioPlayer.cpp.i
 
-.PHONY : src/ui/TextRenderer.i
+.PHONY : src/scene/audio/AudioPlayer.i
 
 # target to preprocess a source file
-src/ui/TextRenderer.cpp.i:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.i
-.PHONY : src/ui/TextRenderer.cpp.i
+src/scene/audio/AudioPlayer.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.i
+.PHONY : src/scene/audio/AudioPlayer.cpp.i
 
-src/ui/TextRenderer.s: src/ui/TextRenderer.cpp.s
+src/scene/audio/AudioPlayer.s: src/scene/audio/AudioPlayer.cpp.s
 
-.PHONY : src/ui/TextRenderer.s
+.PHONY : src/scene/audio/AudioPlayer.s
 
 # target to generate assembly for a file
-src/ui/TextRenderer.cpp.s:
-	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/ui/TextRenderer.cpp.s
-.PHONY : src/ui/TextRenderer.cpp.s
+src/scene/audio/AudioPlayer.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/audio/AudioPlayer.cpp.s
+.PHONY : src/scene/audio/AudioPlayer.cpp.s
+
+src/scene/fps/FpsCounter.o: src/scene/fps/FpsCounter.cpp.o
+
+.PHONY : src/scene/fps/FpsCounter.o
+
+# target to build an object file
+src/scene/fps/FpsCounter.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.o
+.PHONY : src/scene/fps/FpsCounter.cpp.o
+
+src/scene/fps/FpsCounter.i: src/scene/fps/FpsCounter.cpp.i
+
+.PHONY : src/scene/fps/FpsCounter.i
+
+# target to preprocess a source file
+src/scene/fps/FpsCounter.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.i
+.PHONY : src/scene/fps/FpsCounter.cpp.i
+
+src/scene/fps/FpsCounter.s: src/scene/fps/FpsCounter.cpp.s
+
+.PHONY : src/scene/fps/FpsCounter.s
+
+# target to generate assembly for a file
+src/scene/fps/FpsCounter.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/fps/FpsCounter.cpp.s
+.PHONY : src/scene/fps/FpsCounter.cpp.s
+
+src/scene/gui/ImGuiLayer.o: src/scene/gui/ImGuiLayer.cpp.o
+
+.PHONY : src/scene/gui/ImGuiLayer.o
+
+# target to build an object file
+src/scene/gui/ImGuiLayer.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.o
+.PHONY : src/scene/gui/ImGuiLayer.cpp.o
+
+src/scene/gui/ImGuiLayer.i: src/scene/gui/ImGuiLayer.cpp.i
+
+.PHONY : src/scene/gui/ImGuiLayer.i
+
+# target to preprocess a source file
+src/scene/gui/ImGuiLayer.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.i
+.PHONY : src/scene/gui/ImGuiLayer.cpp.i
+
+src/scene/gui/ImGuiLayer.s: src/scene/gui/ImGuiLayer.cpp.s
+
+.PHONY : src/scene/gui/ImGuiLayer.s
+
+# target to generate assembly for a file
+src/scene/gui/ImGuiLayer.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/gui/ImGuiLayer.cpp.s
+.PHONY : src/scene/gui/ImGuiLayer.cpp.s
+
+src/scene/text/TextRenderer.o: src/scene/text/TextRenderer.cpp.o
+
+.PHONY : src/scene/text/TextRenderer.o
+
+# target to build an object file
+src/scene/text/TextRenderer.cpp.o:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.o
+.PHONY : src/scene/text/TextRenderer.cpp.o
+
+src/scene/text/TextRenderer.i: src/scene/text/TextRenderer.cpp.i
+
+.PHONY : src/scene/text/TextRenderer.i
+
+# target to preprocess a source file
+src/scene/text/TextRenderer.cpp.i:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.i
+.PHONY : src/scene/text/TextRenderer.cpp.i
+
+src/scene/text/TextRenderer.s: src/scene/text/TextRenderer.cpp.s
+
+.PHONY : src/scene/text/TextRenderer.s
+
+# target to generate assembly for a file
+src/scene/text/TextRenderer.cpp.s:
+	$(MAKE) -f CMakeFiles/hmi_scene.dir/build.make CMakeFiles/hmi_scene.dir/src/scene/text/TextRenderer.cpp.s
+.PHONY : src/scene/text/TextRenderer.cpp.s
 
 # Help Target
 help:
@@ -456,42 +672,66 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... hmi_scene"
+	@echo "... include/third_party/imgui/backends/imgui_impl_glfw.o"
+	@echo "... include/third_party/imgui/backends/imgui_impl_glfw.i"
+	@echo "... include/third_party/imgui/backends/imgui_impl_glfw.s"
+	@echo "... include/third_party/imgui/backends/imgui_impl_opengl3.o"
+	@echo "... include/third_party/imgui/backends/imgui_impl_opengl3.i"
+	@echo "... include/third_party/imgui/backends/imgui_impl_opengl3.s"
+	@echo "... include/third_party/imgui/imgui.o"
+	@echo "... include/third_party/imgui/imgui.i"
+	@echo "... include/third_party/imgui/imgui.s"
+	@echo "... include/third_party/imgui/imgui_draw.o"
+	@echo "... include/third_party/imgui/imgui_draw.i"
+	@echo "... include/third_party/imgui/imgui_draw.s"
+	@echo "... include/third_party/imgui/imgui_tables.o"
+	@echo "... include/third_party/imgui/imgui_tables.i"
+	@echo "... include/third_party/imgui/imgui_tables.s"
+	@echo "... include/third_party/imgui/imgui_widgets.o"
+	@echo "... include/third_party/imgui/imgui_widgets.i"
+	@echo "... include/third_party/imgui/imgui_widgets.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/FpsCounter.o"
-	@echo "... src/FpsCounter.i"
-	@echo "... src/FpsCounter.s"
-	@echo "... src/Scene.o"
-	@echo "... src/Scene.i"
-	@echo "... src/Scene.s"
-	@echo "... src/audioplayder/AudioPlayer.o"
-	@echo "... src/audioplayder/AudioPlayer.i"
-	@echo "... src/audioplayder/AudioPlayer.s"
-	@echo "... src/controller/ModelController.o"
-	@echo "... src/controller/ModelController.i"
-	@echo "... src/controller/ModelController.s"
-	@echo "... src/controller/UDPDataManager.o"
-	@echo "... src/controller/UDPDataManager.i"
-	@echo "... src/controller/UDPDataManager.s"
-	@echo "... src/importer/ModelImporter.o"
-	@echo "... src/importer/ModelImporter.i"
-	@echo "... src/importer/ModelImporter.s"
-	@echo "... src/loader/GLTFLoader.o"
-	@echo "... src/loader/GLTFLoader.i"
-	@echo "... src/loader/GLTFLoader.s"
-	@echo "... src/model/BaseModel.o"
-	@echo "... src/model/BaseModel.i"
-	@echo "... src/model/BaseModel.s"
-	@echo "... src/model/ImportedModel.o"
-	@echo "... src/model/ImportedModel.i"
-	@echo "... src/model/ImportedModel.s"
-	@echo "... src/model/ModelManager.o"
-	@echo "... src/model/ModelManager.i"
-	@echo "... src/model/ModelManager.s"
-	@echo "... src/ui/TextRenderer.o"
-	@echo "... src/ui/TextRenderer.i"
-	@echo "... src/ui/TextRenderer.s"
+	@echo "... src/Application.o"
+	@echo "... src/Application.i"
+	@echo "... src/Application.s"
+	@echo "... src/data/UDPDataManager.o"
+	@echo "... src/data/UDPDataManager.i"
+	@echo "... src/data/UDPDataManager.s"
+	@echo "... src/model/base/BaseModel.o"
+	@echo "... src/model/base/BaseModel.i"
+	@echo "... src/model/base/BaseModel.s"
+	@echo "... src/model/controller/ModelController.o"
+	@echo "... src/model/controller/ModelController.i"
+	@echo "... src/model/controller/ModelController.s"
+	@echo "... src/model/importer/ModelImporter.o"
+	@echo "... src/model/importer/ModelImporter.i"
+	@echo "... src/model/importer/ModelImporter.s"
+	@echo "... src/model/instances/ImportedModel.o"
+	@echo "... src/model/instances/ImportedModel.i"
+	@echo "... src/model/instances/ImportedModel.s"
+	@echo "... src/model/loader/GLTFLoader.o"
+	@echo "... src/model/loader/GLTFLoader.i"
+	@echo "... src/model/loader/GLTFLoader.s"
+	@echo "... src/model/manager/ModelManager.o"
+	@echo "... src/model/manager/ModelManager.i"
+	@echo "... src/model/manager/ModelManager.s"
+	@echo "... src/scene/Scene.o"
+	@echo "... src/scene/Scene.i"
+	@echo "... src/scene/Scene.s"
+	@echo "... src/scene/audio/AudioPlayer.o"
+	@echo "... src/scene/audio/AudioPlayer.i"
+	@echo "... src/scene/audio/AudioPlayer.s"
+	@echo "... src/scene/fps/FpsCounter.o"
+	@echo "... src/scene/fps/FpsCounter.i"
+	@echo "... src/scene/fps/FpsCounter.s"
+	@echo "... src/scene/gui/ImGuiLayer.o"
+	@echo "... src/scene/gui/ImGuiLayer.i"
+	@echo "... src/scene/gui/ImGuiLayer.s"
+	@echo "... src/scene/text/TextRenderer.o"
+	@echo "... src/scene/text/TextRenderer.i"
+	@echo "... src/scene/text/TextRenderer.s"
 .PHONY : help
 
 
