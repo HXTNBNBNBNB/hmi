@@ -1,3 +1,0 @@
-/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/rebuild_cache.dir
-/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/edit_cache.dir
-/home/good/workspace/jili_hmi/hmi/build/CMakeFiles/hmi_scene.dir
